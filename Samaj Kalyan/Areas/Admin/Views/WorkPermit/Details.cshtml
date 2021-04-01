@@ -1,0 +1,190 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.WorkPermitViewModel
+
+
+<div style="margin-top:10px">
+    <fieldset>
+        <legend></legend>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Council_sRegistrationNumber)
+                </b>
+
+            </span>
+            @*@Model.DateOfJoining.Value.ToShortDateString()*@
+            @*@Html.DisplayFor(x=>x.DOJNepali)*@
+            @Html.DisplayFor(x => x.Council_sRegistrationNumber)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.CouncilRegistrationDate)
+                </b>
+
+            </span>
+            @*@Model.DateOfJoining.Value.ToShortDateString()*@
+            @*@Html.DisplayFor(x=>x.DOJNepali)*@
+            @Html.DisplayFor(x => x.CouncilRegistrationDateNp)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.NameOfApplicant)
+
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.NameOfApplicant)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.ApplicationDesingation)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.ApplicationDesingation)
+       
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Country)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Country)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.PassportNumber)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.PassportNumber)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.VisaDuration)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.VisaDuration)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.DecisionDate)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.DecisionDate)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.VisaType)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.VisaType)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Remarks)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Remarks)
+        </div>
+      
+    </fieldset>
+    <fieldset class="border p-1">
+        <legend>
+            साझेदारहरू
+        </legend>
+        @foreach (var item in Model.WpaFamilyViewModelList)
+        {
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Name)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.Name)
+            </div>
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Country)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.Country)
+            </div>
+
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.PassportNO)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.PassportNO)
+            </div>
+              <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.VisaDuration)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.VisaDuration)
+            </div>
+              <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.VisaType)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.VisaType)
+            </div>
+              <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.DicisionDateNp)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.DicisionDateNp)
+            </div>
+                 <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Relation)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.Relation)
+            </div>
+                  <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.remark)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.remark)
+            </div>
+        }
+        <hr />
+
+    </fieldset>
+  
+</div>
+

@@ -1,0 +1,441 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.GeneralAgreementViewModel
+@{
+    ViewBag.Title = "InsertUpdateGeneralAgreement";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+
+}
+
+@*<h2>InsertUpdateGeneralAgreement</h2>*@
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+
+<script src="~/Content/NepaliDatePicker/js/jquery-2.1.0.min.js"></script>
+<script src="~/Content/NepaliDatePicker/js/jquery.js"></script>
+<script src="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
+<link href="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+
+<div>
+    @if (ViewBag.success != null)
+    {
+        <div class="alert alert-success">
+            <strong>Well done!</strong> @ViewBag.success
+        </div>
+    }
+    @if (TempData["SuccessMsg"] != null)
+    {
+
+        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+            @TempData["SuccessMsg"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Msg"] != null)
+    {
+        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+            @TempData["Msg"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    }
+</div>
+
+
+
+   
+                
+                    @using (Html.BeginForm("InsertUpdateGeneralAgreement", "GeneralAgrement", FormMethod.Post, new { id = "InsertUpdateGeneralAgreement-form", enctype = "multipart/form-data" }))
+                    {
+                         @Html.HiddenFor(model => model.GeneralAgreement_ID)
+                         @Html.HiddenFor(model => model.PA_Attachment_Location)
+                         @Html.HiddenFor(model => model.PA_Attachment_Change)
+                         @Html.HiddenFor(model => model.Scan_GA_Location)
+                         @Html.HiddenFor(model => model.Scan_GA_Change)
+                        <fieldset>
+
+                            <div class="content-table">
+                                <div class="row">
+                                    <div class="col-md-4 form-group">
+                                        @Html.LabelFor(model => model.Name_Of_Ingo, new { @class = "required-field" })
+                                        @Html.TextBoxFor(model => model.Name_Of_Ingo, new { @class = "form-control" })
+
+                                        @Html.ValidationMessageFor(model => model.Name_Of_Ingo, null, new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        @Html.LabelFor(model => model.Name_of_Ingo_Nepali, new { @class = "required-field" })
+                                        @Html.TextBoxFor(model => model.Name_of_Ingo_Nepali, new { @class = "form-control" })
+                                    </div>
+
+                                    
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+                                            @Html.LabelFor(model => model.Country)
+                                            @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+                                            @Html.LabelFor(model => model.Ga_Date)
+                                            @Html.TextBoxFor(model => model.Ga_Date_Nepali, new { @class = "form-control" })
+                                            @*  @Html.DropDownListFor(model => model.ShiftType, BusinessLogic.Service.ShiftService.GetShiftType(), "--select one--", new { @class = "form-control shifttype" })*@
+                                            @Html.HiddenFor(model => model.Ga_Date, new { @class = "form-control" })
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+                                            @Html.LabelFor(model => model.Period)
+                                            @Html.TextBoxFor(model => model.Period, new { @class = "form-control" , @type = "number"})
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+                                            @Html.LabelFor(model => model.Pre_Annum_Commitment_Amount)
+
+                                            @Html.TextBoxFor(model => model.Pre_Annum_Commitment_Amount, new { @class = "form-control  " , @type = "number"})
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Ga_Service_Charge)
+                                            @Html.TextBoxFor(model => model.Ga_Service_Charge, new { @class = "form-control ", @type = "number" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Sector)
+                                            @Html.TextBoxFor(model => model.Sector, new { @class = "form-control", @type = "number" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Hq_Address)
+                                            @Html.TextBoxFor(model => model.Hq_Address, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Contact_Person)
+                                            @Html.TextBoxFor(model => model.Contact_Person, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Country_Official_Nepal_Address)
+                                            @Html.TextBoxFor(model => model.Country_Official_Nepal_Address, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Contact_Number)
+                                            @Html.TextBoxFor(model => model.Contact_Number, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+
+                                            @Html.LabelFor(model => model.Email)
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-grop_padding">
+                                            @Html.LabelFor(model => model.GA_TerminationDate)
+                                            @Html.TextBoxFor(model => model.Ga_TerminationDate_Nepali ,new { @class = "form-control" })
+                                           
+                                            @Html.HiddenFor(model => model.GA_TerminationDate, new { @class = "form-control" })
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </fieldset>
+                           <div class="box box-primary">
+                                        <div class="box-body box-profile">
+                                            @if (Model.Scan_GA_Location != null)
+                                            {
+
+                                                <img class="img-responsive" id="applicantImage" src='@Url.Content("~/" + Model.Scan_GA_Location)' />
+
+                                            }
+                                            else
+                                            {
+
+                                                <img class="img-responsive" id="applicantImage" src='@Url.Content("~/Content/Uploads/ApplicantImage/default.png")'>
+
+                                            }
+                                            <h3 class="profile-username text-center">स्क्यान फाइल</h3>
+                                            <div class="form-control-file">
+                                                <div class="form-group">
+                                                    <label for="imagePicker">File input</label>
+                                                    <input type="file" multiple accept="image/*" name="Scan_GA" id="imagePicker" class="input-border btn btn-primary" onchange="document.getElementById('image-file-text').value = this.value.replace(/^.*\\/, '')">
+                                                    @Html.TextBoxFor(x => x.Scan_GA_Name, new { id = "image-file-text", @class = "form-control readonly ", placeholder = "Select Image File" })
+                                                </div>                                                
+                                                @if (Model.Scan_GA_Location != null)
+                                                {
+                                                    string ImgLocation = @Url.Content("~/" + Model.Scan_GA_Location);
+                                                    string[] extension = ImgLocation.Split('.');
+
+                                                    string filename = extension[1].ToString();
+                                                    string[] extension2 = filename.Split('.');
+                                                    string a = extension[0].ToString();
+                                                    string[] a1 = a.Split('/');
+                                                    string a2 = a1[0].ToString();
+                                                    string a3 = a1[1].ToString();
+                                                    string a4 = a1[2].ToString();
+                                                    string a5 = a1[3].ToString();
+                                                    string[] b = a5.Split('_');
+                                                    string a6 = b[1].ToString();
+                                                    string adasda = "/" + a3 + "/" + a4 + "/" + a6 + "." + filename;
+
+
+
+                                            
+                                                    <a class="btn btn-primary btn-block" href='@Url.Content("~/GeneralAgrement/Download?fileLocation=" + ImgLocation)' target="_blank"><i class="fa fa-download"></i>Download File</a>
+                                                }
+                                            </div>
+                                            
+
+                                            @*<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>*@
+                                        </div>
+                               </div>
+
+                        @*<fieldset>
+                            <div class="box-header">
+                                <h3 class="box-title"> Attachment Files</h3>
+                                <div class="box-tools">
+                                    <button type="button" id="btn-AddEmployeeDetails" class="btn btn-primary btn-add pull-right"><i class="fa fa-plus"></i>Add More</button>
+                                </div>
+                            </div>
+                            <div class="content-table">
+                                <div id="Employe-details-table-div">
+
+                                    <div class="clearfix"></div>
+
+
+                                    <div id="Employe-detailsList">
+                                        <div class="box-body table-responsive ">
+                                            <table class="table table-hover">
+
+                                                <tr>
+                                                    <th>SN.</th>
+                                                    <th>Scan GA</th>
+
+                                                    <th>PA ATT</th>
+                                                    <th>Action </th>
+                                                </tr>
+
+                                                <tbody id="Employe-details-table-body">
+                                                    @if (Model != null && Model.GaAttachmentViewModelList != null)
+                                                    {
+                                                        int counter = 1;
+                                                        foreach (var item in Model.GaAttachmentViewModelList)
+                                                        {
+                                                            ViewBag.Counter = counter;
+                                                    @Html.Partial("_EmployeDetails", item)
+                                                            counter++;
+
+                                                        }
+                                                    }
+                                                </tbody>
+
+                                            </table>
+                                            @*<div class="sn-no"></div>
+                                    <div class="width20">Designation</div>
+                                    <div class="width20">No of deployment</div>
+                                    <div class="width20">Duty slots</div>
+                                    <div class="action">Action</div>
+                                    <div class="clearfix"></div>
+                                    </tr>*@
+
+
+
+
+
+
+
+
+
+
+                                        @*</div>*@
+                                        @*<div class="box-body table-responsive" >
+                                    <div class="table table-hover">
+                                        <table>
+
+                                        </table>
+                                    </div>
+
+                                </div>*@
+                                    @*</div>
+                                </div>
+                            </div>
+                        </fieldset>*@
+                        <div class="btn-groups modal-footer">
+
+                            <button type="submit" id="SaveB" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+                           
+
+                        </div>
+                    }
+               
+   
+
+                    <script>
+                        function DeleteRow(e) {
+                            var section = $(e).closest('fieldset').find('legend').html();
+                            var confirmValue = confirm("Are you sure to delete this " + section + " ?");
+                            if (confirmValue) {
+                                $(e).closest('tr').remove();
+                            }
+
+                        }
+                        $('#btn-AddEmployeeDetails').on('click', function () {
+                            var counter = $('#Employe-details-table-body').find('tr').length + 1;
+                            debugger;
+                            $.ajax({
+                                url: '@Url.Content("~/Admin/GeneralAgrement/AddMoreAttachment")',
+                                data: { counter: counter },
+                                success: function (result) {
+                                    if (result) {
+                                        $('#Employe-details-table-body').append(result);
+                                    }
+                                },
+                                error: function () {
+                                    alert('error in calling ajax !!')
+                                }
+                            });
+
+                        });
+
+
+
+
+
+                        $('#imagePicker').on('change', function () {
+                            if (this.files && this.files[0]) {
+                                var chk = isImage(this.files[0].name)
+                                if (!chk) {
+                                    alert('Invalid File Type!! Please select jpg or png file!!');
+                                    return;
+                                }
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    $('#applicantImage').attr('src', e.target.result);
+                                    $('#ImageChange').val(true);
+                                }
+
+                                reader.readAsDataURL(this.files[0]);
+                            }
+                        });
+                        function isImage(filename) {
+                            var ext = getExtension(filename);
+                            switch (ext.toLowerCase()) {
+                                case 'jpg':
+                                case 'png':
+                                case 'jpeg':
+                                    return true;
+                            }
+                            return false;
+                        }
+                        function getExtension(filename) {
+                            var parts = filename.split('.');
+                            return parts[parts.length - 1];
+                        }
+                        function FileName(e) {
+                            var filename = $(e).closest('tr').find('.filename');
+                            if ($(filename).val() == '' || $(filename).val() == 'undefined')
+                                $(filename).val(e.value.replace(/^.*\\/, ''))
+
+                        }
+                    </script>
+              <script>
+
+                  $('#SaveB').on('click', function () {
+                      //alert('dd');
+                      setCookie("insert", "true", 20);
+                      //alert(getCookie("insert"));
+                      
+                  });
+
+                  function getCookie(cname) {
+                      debugger;
+                      var name = cname + "=";
+                      var ca = document.cookie.split(';');
+                      for (var i = 0; i < ca.length; i++) {
+                          var c = ca[i];
+                          while (c.charAt(0) == ' ') {
+                              c = c.substring(1);
+                          }
+                          if (c.indexOf(name) == 0) {
+                              return c.substring(name.length, c.length);
+                          }
+                      }
+                      return "";
+                  }
+
+                  function setCookie(cname, cvalue, exSecond) {
+                      debugger;
+                      var d = new Date();
+                      d.setTime(d.getTime() + (exSecond * 1000));
+                      var expires = "expires=" + d.toUTCString();
+                      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                  }
+
+               
+              </script>
+
+
+
+
+<script>
+
+    $('#Ga_Date_Nepali').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+        ndpEnglishInput: 'Ga_Date'
+    });
+    $('#Ga_TerminationDate_Nepali').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+        ndpEnglishInput: 'GA_TerminationDate'
+    });
+
+
+    $('#Ga_Date_Nepali').change(function () {
+        $('#Ga_Date').val(BS2AD($('#Ga_Date_Nepali').val()));
+    });
+    $('#Ga_TerminationDate_Nepali').change(function () {
+        $('#GA_TerminationDate').val(BS2AD($('#Ga_TerminationDate_Nepali').val()));
+    });
+
+</script>
+

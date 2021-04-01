@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80e0717cf09d4ffd97a90333a06e36bb" Name="Diagram1" ZoomLevel="105">
+        <EntityTypeShape EntityType="SamajkalyanModel.ze" Width="1.5" PointX="3" PointY="1.5" FillColor="DarkRed" />
+        <EntityTypeShape EntityType="SamajkalyanModel.GeneralAgreement" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="SamajkalyanModel.PA_PartnerNgo" Width="1.5" PointX="5.25" PointY="10.125" />
+        <EntityTypeShape EntityType="SamajkalyanModel.PA_Sector" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="SamajkalyanModel.PA_Years" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="SamajkalyanModel.ProjectAgreement_Districts" Width="1.5" PointX="5.25" PointY="4.25" />
+        <AssociationConnector Association="SamajkalyanModel.FK_GA_Attachment_GeneralAgreement" />
+        <EntityTypeShape EntityType="SamajkalyanModel.ProvincesDistrictSetup" Width="3.375" PointX="8" PointY="1.25" />
+        <EntityTypeShape EntityType="SamajkalyanModel.ProvincesMunType" Width="3.875" PointX="12.75" PointY="1.125" />
+        <EntityTypeShape EntityType="SamajkalyanModel.provincesSetup" Width="3.375" PointX="9.75" PointY="4.5" />
+        <EntityTypeShape EntityType="SamajkalyanModel.provincesVDCDetail" Width="3.375" PointX="9.875" PointY="6.625" />
+        <EntityTypeShape EntityType="SamajkalyanModel.IngoRenewal" Width="1.5" PointX="3" PointY="16.375" />
+        <EntityTypeShape EntityType="SamajkalyanModel.IngoTermination" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="SamajkalyanModel.ProjectAgreement" Width="1.5" PointX="3" PointY="9" />
+        <AssociationConnector Association="SamajkalyanModel.FK_IngoRenewal_GeneralAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_IngoTermination_GeneralAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_ProjectAgreement_GeneralAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_PA_PartnerNgo_ProjectAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_PA_Sector_ProjectAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_PA_Years_ProjectAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_ProjectAgreement_Districts_ProjectAgreement" />
+        <EntityTypeShape EntityType="SamajkalyanModel.IngoRewnewalDocument" Width="1.5" PointX="5.25" PointY="17.375" />
+        <AssociationConnector Association="SamajkalyanModel.FK_IngoRewnewalDocument_IngoRenewal" />
+        <EntityTypeShape EntityType="SamajkalyanModel.WorkPermit" Width="1.5" PointX="8.25" PointY="9.625" />
+        <EntityTypeShape EntityType="SamajkalyanModel.WorKPermitType" Width="1.5" PointX="6" PointY="21" />
+        <AssociationConnector Association="SamajkalyanModel.FK_WorkPermit_ProjectAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_WorkPermit_WorKPermitType" />
+        <EntityTypeShape EntityType="SamajkalyanModel.WpaFamily" Width="1.5" PointX="10.5" PointY="10.25" />
+        <AssociationConnector Association="SamajkalyanModel.FK_WpaFamily_WorkPermit" />
+        <EntityTypeShape EntityType="SamajkalyanModel.PrincipaleConstantOfVolunter" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="SamajkalyanModel.FK_PrincipaleConstantOfVolunter_ProjectAgreement" />
+        <EntityTypeShape EntityType="SamajkalyanModel.HandOver_TakeOver" Width="1.5" PointX="5.25" PointY="30.875" />
+        <EntityTypeShape EntityType="SamajkalyanModel.Import_DutyFreeRecommendation" Width="1.5" PointX="5.25" PointY="36.5" />
+        <EntityTypeShape EntityType="SamajkalyanModel.VehicleAuction" Width="1.5" PointX="5.25" PointY="25.25" />
+        <AssociationConnector Association="SamajkalyanModel.FK_HandOver_TakeOver_ProjectAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_Import_DutyFreeRecommendation_ProjectAgreement" />
+        <AssociationConnector Association="SamajkalyanModel.FK_VehicleAuction_ProjectAgreement" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

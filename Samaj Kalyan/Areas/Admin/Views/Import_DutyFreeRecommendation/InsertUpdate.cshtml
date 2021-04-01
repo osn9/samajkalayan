@@ -1,0 +1,221 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.Import_DutyFreeRecommendationViewModel
+@{
+    ViewBag.Title = "InsertUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+}
+
+<script src="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
+<link href="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+
+
+
+@using (Html.BeginForm("InsertUpdate", "Import_DutyFreeRecommendation", FormMethod.Post, new { id = "InsertUpdate-form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.ImportId)
+    @*@Html.HiddenFor(model => model.File_Change, new { @id = "ImageChange" })*@
+
+    <fieldset>
+
+        <div class="content-table">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.GA_Id, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.GA_Id, Samaj_Kalyan.Utility.CommonUtility.GetIngoName(), new { @class = "form-control GA" })
+                    @Html.ValidationMessageFor(model => model.GA_Id)
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PA_Id, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.PA_Id, Samaj_Kalyan.Utility.CommonUtility.Getpalist(Model.GA_Id), new { @class = "form-control PA" })
+                </div>
+
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Council_RegistrtionNumber)
+                        @Html.TextBoxFor(model => model.Council_RegistrtionNumber, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.CouncilRegistrationDate)
+                    @Html.HiddenFor(model => model.CouncilRegistrationDate, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.CouncilRegistrationDateNp, new { @class = "form-control" })
+                </div>
+
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.DonnerAddress)
+                    @Html.TextBoxFor(model => model.DonnerAddress, new { @class = "form-control" })
+                </div>
+
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.DonnerName)
+                    @Html.TextBoxFor(model => model.DonnerName, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.DiscriptionOfGoods)
+                  
+                    @Html.TextBoxFor(model => model.DiscriptionOfGoods, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.InvoiceNumber)
+                    @Html.TextBoxFor(model => model.InvoiceNumber, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.InvoiceDate)
+                    @Html.HiddenFor(model => model.InvoiceDate, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.InvoiceDateNp, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.DiscriptionOfGoods)
+                    @Html.TextBoxFor(model => model.DiscriptionOfGoods, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.TotalAmountForieignCurrency)
+                    @Html.TextBoxFor(model => model.TotalAmountForieignCurrency, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.TotalAmountNepaliCurrency)
+                    @Html.TextBoxFor(model => model.TotalAmountNepaliCurrency, new { @class = "form-control" })
+                </div>
+            </div>
+       
+
+
+        </div>
+    </fieldset>
+
+    <br />
+    <br />
+    <br />
+
+
+
+
+
+    <div class="btn-groups modal-footer">
+
+        <button type="submit" id="SaveB" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+
+
+    </div>
+}
+<script>
+
+    $('#SaveB').on('click', function () {
+        //alert('dd');
+        setCookie("insert", "true", 20);
+        //alert(getCookie("insert"));
+
+    });
+
+    function getCookie(cname) {
+        debugger;
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exSecond) {
+        debugger;
+        var d = new Date();
+        d.setTime(d.getTime() + (exSecond * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+
+</script>
+
+<script>
+
+    $('#RenewalDateNP').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+        ndpEnglishInput: 'RenewDate'
+    });
+
+    $('#RenewalDateNP').change(function () {
+        $('#RenewDate').val(BS2AD($('#RenewalDateNP').val()));
+    });
+
+    $(function () {
+        debugger;
+        $(".content-table").on('change', '.GA', function () {
+            debugger;
+            //  alert("");
+            debugger;
+            var id = $(this).val();
+
+            var json = { id: id };
+            var project = $(this).closest('.row').find(".PA")
+            $(project).find('option').remove()
+            // var MunVdc = $(this).closest('tr').find(".VDCMUN")
+            //$(district).empty();
+            //$(MunVdc).empty();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetPaByGaId", "WorkPermit")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    debugger;
+                    $(project).append('<option value="">--SELECT PA--</option>');
+                    $.each(data, function (key, value) {
+                        $(project).append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                    });
+                }
+            });
+        });
+    });
+
+
+    $('#btn-AddEmpFile').on('click', function () {
+        //var counter = $('#Empfile-table-div').find('div.indivisual-row').length + 1;
+        var counter = $('#Empfile-table-body').find('tr').length + 1;
+        debugger;
+        $.ajax({
+
+            url: '@Url.Content("~/Admin/Renewal/AddMoreDocument")',
+            data: { counter: counter },
+            success: function (result) {
+                if (result) {
+                    debugger;
+                   // alert("asda")
+                    //$('#Empfile-table-div').append(result);
+                    $('#Empfile-table-body').append(result);
+                }
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+
+    });
+    function DeleteRow(e) {
+        var section = $(e).closest('fieldset').find('legend').html();
+        var confirmValue = confirm("Are you sure to delete this " + section + " ?");
+        if (confirmValue) {
+            $(e).closest('div.indivisual-row').remove();
+        }
+    }
+    function DeleteRowTR(e) {
+
+        var confirmValue = confirm("Are you sure to delete this row?");
+        if (confirmValue) {
+            $(e).closest('tr').remove();
+        }
+    }
+</script>

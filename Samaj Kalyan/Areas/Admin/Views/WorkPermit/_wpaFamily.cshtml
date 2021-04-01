@@ -1,0 +1,98 @@
+﻿
+@using FormCollectionHelper
+@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.WpaFamilyViewModel
+
+
+
+
+
+
+
+        @using (Html.BeginCollectionItem("WpaFamilyViewModelList"))
+        {
+            
+    <section>
+        <div class="row">
+            @*<div> class="sn-no">@ViewBag.Counter</div>*@
+            @*<td class="form-group ">*@
+            @Html.HiddenFor(model => model.WPAFamilyId)
+            @*   @Html.DropDownListFor(model => model.DesignationId, BusinessLogic.Service.CommonService.GetDesignation(), "--select one--", new { @class = "form-control" })*@
+            @*@Html.ValidationMessageFor(model => model.Examination)*@
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.Name, new { @class = "required-field" })
+                    @*@Html.DropDownListFor(model => model.Desigination, BusinessLogic.Service.CommonService.GetDesignationName(), "--select one--", new { @class = "form-control" })*@
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control ndep " })
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.Country, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.Country, new { @class = "form-control ds" })
+                    @*@Html.ValidationMessageFor(model => model.Examination)*@
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.PassportNO, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.PassportNO, new { @class = "form-control ds" })
+                    @*@Html.ValidationMessageFor(model => model.Examination)*@
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.VisaDuration, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.VisaDuration, new { @class = "form-control ds" })
+                    @*@Html.ValidationMessageFor(model => model.Examination)*@
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.VisaType, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.VisaType, new { @class = "form-control ds" })
+                    @*@Html.ValidationMessageFor(model => model.Examination)*@
+                </div>
+            </div>
+
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.DicisionDateNp, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.DicisionDateNp, new { @class = "form-control ds" })
+                    @Html.HiddenFor(model => model.DicisionDate, new { @class = "form-control ds" })
+
+
+                    @*@Html.ValidationMessageFor(model => model.Examination)*@
+                </div>
+            </div>
+
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.Relation, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.Relation, new { @class = "form-control ds" })
+                    @*@Html.ValidationMessageFor(model => model.Examination)*@
+                </div>
+            </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.remark, new { @class = "required-field" })
+                        @Html.TextBoxFor(model => model.remark, new { @class = "form-control ds" })
+                        @*@Html.ValidationMessageFor(model => model.Examination)*@
+                    </div>
+                </div>
+
+
+            <div class="col-md-4  action">
+                <button type="button" onclick="DeleteRow(this)" class="btn btn-sm btn-danger delete"><i class="fa fa-trash-o"></i>Remove</button>
+            </div>
+
+
+
+
+
+            </div>
+
+        <br />
+        <hr  />
+
+</section>
+        }

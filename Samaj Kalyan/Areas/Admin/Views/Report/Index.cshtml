@@ -1,0 +1,610 @@
+﻿@model Samaj_Kalyan.SamajKalayan.Entities.GeneralAgreement
+@{
+    ViewBag.Title = "GAReport";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+    int i = 1;
+}
+<div class="container">
+
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home">सामान्य सम्झौता </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1">परियोजना सम्झौता</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu2"> सामान्य सम्झौता समाप्ति </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu3"> सामान्य सम्झौता नविकरण </a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="home" class="container tab-pane active">
+            <br />
+            <fieldset>
+
+
+                <div class="row">
+                    <span class="col-md-3">
+                        <b>
+                            अन्तर्राष्ट्रिय गैर सरकारी संस्थाको नाम अंग्रेजी
+                        </b>
+
+                    </span>
+                    @*@Model.DateOfJoining.Value.ToShortDateString()*@
+                    @*@Html.DisplayFor(x=>x.DOJNepali)*@
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Name_Of_Ingo)
+                    </span>
+
+                    <span class="col-md-3">
+                        <b>
+
+                            अन्तर्राष्ट्रिय गैर सरकारी संस्थाको नाम
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Name_of_Ingo_Nepali)
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-md-3">
+                        <b>
+
+                            मिति
+                        </b>
+
+                    </span>
+                    @{
+    var sdate = Model.Ga_Date.Value.ToShortDateString();
+
+    Convert.ToDateTime(sdate);
+                    <span class="col-md-3">
+
+                        @*@sdate*@
+                        @Html.DisplayFor(x => x.Ga_Date_Nepali)
+                    </span>
+                    }
+
+
+                    <span class="col-md-3">
+                        <b>
+                            सम्पर्क व्यक्ति
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+
+                        @Html.DisplayFor(x => x.Contact_Person)
+
+
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-md-3">
+                        <b>
+                            सम्पर्क नम्बर
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Contact_Number)
+
+
+                    </span>
+
+                    <span class="col-md-3">
+                        <b>
+                            देश
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Country)
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-md-3">
+                        <b>
+                            सेक्टर
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Sector)
+                    </span>
+
+                    <span class="col-md-3">
+                        <b>
+                            अवधि
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Period)
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-md-3">
+                        <b>
+                            ठेगाना
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Hq_Address)
+
+                    </span>
+                    <span class="col-md-3">
+                        <strong>
+                            परियोजनाको संख्या
+                        </strong>
+                    </span>
+                    <span class="col-md-3">
+                        @Model.ProjectAgreements.Count()
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col-md-3">
+                        <b>
+                            पूर्व अन्न प्रतिबद्धता रकम
+                        </b>
+
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Pre_Annum_Commitment_Amount)
+
+                    </span>
+                    <span class="col-md-3">
+                        <strong>
+                            देश आधिकारिक
+                        </strong>
+                    </span>
+                    <span class="col-md-3">
+                        @Html.DisplayFor(x => x.Country_Official_Nepal_Address)
+                    </span>
+                </div>
+
+                <div class="row">
+                    <span class="col-md-3">
+                        <strong> फाइल</strong>
+                    </span>
+                    <span class="col-md-3">
+                        @if (Model.Scan_GA_Location != null)
+                        {
+
+                        <img width="100" height="100" id="applicantImage" src='@Url.Content("~/" + Model.Scan_GA_Location)' />
+
+                        }
+                    </span>
+                </div>
+            </fieldset>
+
+        </div>
+        <br />
+
+
+        <div id="menu1" class="container tab-pane fade">
+            <br>
+            <div class="container">
+                <ul class="nav nav-tabs" role="tablist">
+                    @foreach (var item in Model.ProjectAgreements)
+                    {
+                        <li class="nav-item @(i == 1 ? "active" : "")">
+                            <a class="nav-link  @(i == 1 ? "active" : "")" data-toggle="tab" href="#subtab_@item.ProjectAgreement_ID">@item.Name_Of_Project </a>
+                        </li>
+                        { i++; }
+                    }
+                    @{i = 1;}
+
+                </ul>
+
+                <div class="tab-content">
+
+                    @foreach (var item in Model.ProjectAgreements)
+                    {
+                        <div id="subtab_@item.ProjectAgreement_ID" class="container tab-pane @(i == 1 ? " fade active show" : " fade")">
+
+                            <br>
+                            <span>sn @i</span>
+                            <div style="margin-top:10px">
+                                <fieldset>
+                                    <legend></legend>
+
+                                    <div class="row">
+                                        <span class="col-md-3">
+                                            <b>
+                                                परियोजनाको नाम
+                                            </b>
+
+                                        </span>
+                                        @*@Model.DateOfJoining.Value.ToShortDateString()*@
+                                        @*@Html.DisplayFor(x=>x.DOJNepali)*@
+
+                                        <span class="col-md-3">
+                                            @item.Name_Of_Project
+                                        </span>
+
+                                        <span class="col-md-3">
+                                            <b>
+                                                प्रोजेक्ट को नाम अंग्रेजी
+
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Name_Of_Project_Nepali
+
+
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-md-3">
+                                            <b>
+                                                परियोजनाको साइन मिति
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @*@item.PA_Sign_Date*@
+                                            @item.Pa_Sign_DateNepali
+
+
+                                        </span>
+
+                                        <span class="col-md-3">
+                                            <b>
+                                                डोनर
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Doner
+
+
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-md-3">
+                                            <b>
+                                                बैंकको नाम
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Name_Of_Bank
+                                        </span>
+
+                                        <span class="col-md-3">
+                                            <b>
+                                                बैंकको खाता नम्बर
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Account_NO
+
+
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-md-3">
+                                            <b>
+                                                कुल बजेट
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Total_Budget
+
+
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-md-3">
+                                            <b>
+                                                प्रशासनको लागत
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Admin_Cost
+                                        </span>
+
+                                        <span class="col-md-3">
+                                            <b>
+                                                कार्यक्रमको लागत
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Program_Cost
+                                        </span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-md-3">
+                                            <b>
+                                                परियोजनाको अवधि
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.Project_Period
+
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            <b>
+                                                विशेषज्ञको संख्या
+                                            </b>
+
+                                        </span>
+                                        <span class="col-md-3">
+                                            @item.No_Of_Expertriate
+
+
+                                        </span>
+                                    </div>
+                                </fieldset>
+                                <br />
+
+                                <fieldset class="border p-1">
+                                    <legend>
+                                        साझेदारहरू
+                                    </legend>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="getable">
+
+
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        गैर सरकारी संगठन
+                                                    </th>
+                                                    <th>
+                                                        गैर सरकारी संस्थाको नाम
+                                                    </th>
+                                                    <th>
+                                                        राशि
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item2 in item.PA_PartnerNgo)
+                                            {
+                                            <tr>
+                                                <td>
+                                                    @item2.Ngo_Name
+
+
+                                                </td>
+
+                                                <td>
+                                                    @item2.Ngo_Number
+
+
+                                                </td>
+                                                <td>
+                                                    @item2.Amount
+
+
+                                                </td>
+
+
+                                            </tr>
+                                            }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <hr />
+
+                                </fieldset>
+                                <fieldset class="border p-1">
+                                    <legend>
+                                        जिल्ला अनुसार
+                                        बजेट
+                                    </legend>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        प्रदेश
+                                                    </th>
+                                                    <th>
+                                                        जिल्ला
+                                                    </th>
+                                                    <th>
+                                                        स्थानीय लेवल
+                                                    </th>
+
+                                                    <th>
+                                                        जिल्लाको राशि
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+
+
+                                            @foreach (var item3 in item.ProjectAgreement_Districts)
+                                        {
+                                        <tr>
+                                            <td>
+
+
+                                                @if (item3.ProvienceId.HasValue)
+                                                    {
+                                                    <span>
+                                                        @Samaj_Kalyan.Utility.CommonUtility.proviencceName(item3.ProvienceId ?? 0)
+                                                    </span>
+
+                                                    }
+
+
+                                            </td>
+
+
+                                            <td>
+
+                                                @if (item3.DistrictID.HasValue)
+                                                    {
+                                                    <span>
+                                                        @Samaj_Kalyan.Utility.CommonUtility.districtName(item3.DistrictID ?? 0)
+                                                    </span>
+                                                    }
+
+                                            </td>
+
+                                            <td>
+
+
+                                                @if (item3.Locallevel.HasValue)
+                                                    {
+                                                    <span>@Samaj_Kalyan.Utility.CommonUtility.localName(item3.Locallevel ?? 0)</span>
+                                                    }
+                                            </td>
+                                            <td>
+                                                @item3.DistrictWiseAmmount
+
+
+                                            </td>
+
+                                        </tr>
+
+
+
+                                        }
+                                        </table>
+                                    </div>
+
+
+                                </fieldset>
+                            </div>
+                            <br />
+                            <hr />
+                            @(i++)
+                        </div>
+                        <br />
+                    }
+                </div>
+                </div>
+        </div>
+        <div id="menu2" class="container tab-pane fade">
+            <br>
+
+
+            <div>
+                <fieldset>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        सम्पत्तिको नाम
+                                    </th>
+                                    <th>
+                                        समाप्ति मिति
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.IngoTerminations)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.NameOfAssest
+                                        </td>
+                                        <td>
+                                            @item.TerminationDate
+                                        </td>
+
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+        <div id="menu3" class="container tab-pane fade">
+            <br>
+
+
+            <div>
+                <fieldset>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        अवधि                                    </th>
+                                    <th>
+                                        नविकरण शुल्क
+                                    </th>
+                                    <th>
+                                        नविकरण मिति
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.IngoRenewals)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Period
+                                        </td>
+                                        <td>
+                                            @item.RenewCharge
+                                        </td>
+                                        <td>
+                                            @item.RenewalDateNP
+                                        </td>
+
+                                    </tr>
+                                    foreach (var item2 in item.IngoRewnewalDocuments)
+                                    {
+                                        <tr>
+                                            <td>
+                                                Documents
+                                            </td>
+                                 <td>
+                                     @item2.FileName
+                                 </td>
+                                            <td>
+                                                @if (item2.DocumentLocation != null)
+                                                {
+                                                    string FileLocation = @Url.Content("~/" + item2.DocumentLocation);
+
+                                                    <a class="btn btn-default" href='@Url.Content("~/GeneralAgrement/Download?fileLocation=" + FileLocation)' target="_blank"><i class="fa fa-download"></i>Download File</a>
+                                                   
+                                                }
+                                            </td>
+                                </tr>
+                                    }
+                           
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+</div>

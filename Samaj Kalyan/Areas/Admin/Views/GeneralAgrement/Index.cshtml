@@ -1,0 +1,453 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.GeneralAgreementViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+    int counter = 1;
+}
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.min.js"></script>
+
+<link href="~/Styles/css/themes/default.min.css" rel="stylesheet" />
+<link href="~/Styles/css/alertify.min.css" rel="stylesheet" />
+<script src="~/Styles/alertify.min.js"></script>
+<div>
+    <a href="@Url.Action("InsertUpdateGeneralAgreement", "GeneralAgrement")" class="btn btn-md btn-primary float-left"><i class="fa fa-plus-circle"></i>Add New</a>
+    <input type="button" class="btn btn-md btn-default float-right" value="Get Expiring project Numbers " id="not" />
+</div>
+<br />
+<br /><br />
+@*<div class="float-left">
+    @if (ViewBag.success != null)
+    {
+        <div class="alert alert-success">
+            <strong>Well done!</strong> @ViewBag.success
+        </div>
+    }
+    @if (TempData["SuccessMsg"] != null)
+    {
+
+        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+            @TempData["SuccessMsg"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Msg"] != null)
+    {
+        <script>alert("@TempData["Msg"]");</script>
+    }
+</div>*@
+<div class="table-responsive">
+    <table class="table table-hover" id="getable">
+        <thead>
+            <tr>
+                <th class="width-30">
+                    SN.
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.Name_Of_Ingo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name_of_Ingo_Nepali)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hq_Address)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Ga_Date)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Contact_Number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country_Official_Nepal_Address)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact_Person)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sector)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ga_Service_Charge)
+                </th>*@
+                <th>
+                    Time
+                </th>
+                <th>
+                    Action
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.GeneralAgreementViewModelList)
+            {
+               // var status = item.Status ?? false;
+                <tr id="row-@item.GeneralAgreement_ID">
+                    <td>
+                        @counter
+                    </td>
+                    <td>
+                        @*<a href="#" onclick="EditDeployment(@item.DepId)"><i class="fa fa-edit"></i> @item.JobPost</a>*@
+                        <a id="@item.GeneralAgreement_ID" class="agent-name" href='@Url.Content("~/Admin/GeneralAgrement/InsertUpdateGeneralAgreement?id=" + item.GeneralAgreement_ID)'><i class="fa fa-edit"></i> @item.Name_Of_Ingo</a>
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Name_of_Ingo_Nepali)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Hq_Address)
+                    </td>
+                    <td>
+                        @{ if (item.Ga_Date.HasValue)
+                         {
+                             var jpt = item.Ga_Date.Value.ToShortDateString();
+                            @*<span>@jpt</span>*@
+                              @Html.DisplayFor(modelItem => item.Ga_Date_Nepali)  
+                         }
+
+                        }
+                     
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeRemaining)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Contact_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country_Official_Nepal_Address)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contact_Person)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sector)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ga_Service_Charge)
+
+                    </td>*@
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a href="#javascript:void(0)" class="btn btn-primary detail  " id="detail_@item.GeneralAgreement_ID" data-toggle="modal" data-target="#CommonModal">
+                                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                    <strong>Details</strong>
+                                </a>
+                            </div>
+                                <div class="col-sm-6">
+                                    @*<a href="" data-toggle="modal" data-target="#DeleteModal" class="delete" id="del_@item.DepId"><i class="fa" style="font-size: 20px; color: red; padding: 1px">&#xf014</i><strong>Delete</strong></a>*@
+                                    @*<a href="#javascript:void(0)" class="btn btn-danger  " id="del_@item.GeneralAgreement_ID" data-toggle="modal" data-target="#CommonModal">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        <strong>Delete</strong>
+                                    </a>*@
+                                    <input type="button" value="Delete" class="btn btn-danger" onclick="remove(@item.GeneralAgreement_ID)">
+                                </div>
+                         
+
+                            </div>
+                    </td>
+
+                </tr>
+                            counter++;
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th >
+                    SN.
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.Name_Of_Ingo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name_of_Ingo_Nepali)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hq_Address)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Ga_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TimeRemaining)
+                </th>
+
+                <th>
+                    Action
+                </th>
+
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("delete", "GeneralAgrement", FormMethod.Post, new { id = "Delete-form", enctype = "multipart/form-data" }))
+            {
+                <div class="modal-header">
+                    <h5 class="modal-title" id="DeleteModalLabel">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <label>
+                        Are you sure you want to delete?
+                    </label>
+                    @*@Html.TextBoxFor(model => model.CompletedDateNp, new { @class = "form-control nepali-calendar", @id = "cdDate", @name = "cdDate" })
+                        @Html.HiddenFor(model => model.CompletedDateAd, new { @id = "cdDateNp", @name = "cdDateNp" })*@
+                    @*<input type="text" class="nepali-calendar" id="cdDate" name="cdDate">
+                        <input type="text" id="cdDateNp" name="cdDateNp">*@
+
+                    <input id="DepidDelete" name="id" type="text" hidden="hidden" >
+                    @**@
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="Submit" class="btn btn-primary">Delete </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="CommonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" >
+            <div class="modal-body" id="CommonMC"></div>
+        </div>
+    </div>
+</div>
+
+
+@{if (true)
+  {
+      if (TempData["SuccessMsg"] != null)
+      {
+          <script>
+
+              function getCookie(cname) {
+                  debugger;
+                  var name = cname + "=";
+                  console.log(document.cookie);
+                  var ca = document.cookie.split(';');
+                  for (var i = 0; i < ca.length; i++) {
+                      var c = ca[i];
+                      while (c.charAt(0) == ' ') {
+                          c = c.substring(1);
+                      }
+                      if (c.indexOf(name) == 0) {
+                          return c.substring(name.length, c.length);
+                      }
+                  }
+                  return "";
+              }
+              if(getCookie('insert')!=""){
+                  debugger;
+                 // alert('asdasd')
+                  swal("Success!", "Data Saved", "success");
+              }
+              else
+              {
+                  //alert('a')
+              }
+             
+              
+</script>
+}
+    
+  }
+
+}
+
+<script>
+    $(document).ready(function () {
+       // swal("Oops", "Something went wrong!", "error")
+        // Setup - add a text input to each footer cell
+
+      
+
+
+
+        $('#getable tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="' + title + ' "/>');
+        });
+
+        // DataTable
+        var table = $('#getable').DataTable();
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+        //$('#getable').DataTable();
+    });
+
+    $('.delete').click(function () {
+        debugger
+        //alert("asdasdasd");
+        event.preventDefault();
+        var abc = $(this).attr("id");
+        abc = abc.substring(abc.indexOf('_') + 1);
+        $('#DepidDelete').val(abc);
+    });
+
+
+
+</script>
+<script>
+    
+
+    function remove(clientId) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover your profile!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete)=>{
+            debugger;
+        if (willDelete) {
+            $.ajax({
+                type: "POST",
+                data: {
+                    id: clientId
+                },
+                url: "/GeneralAgrement/delete",
+                dataType: "json",
+                success: function (response) {
+                  
+                    swal("Poof! Your profile has been deleted!", {
+                        icon: "success",
+                    });
+                    $("#row-"+clientId).remove();
+                    //swal({
+                    //    title: "Poof! you are deleted",
+                       
+                    //    icon: "success",
+                    //    buttons: true,
+                        
+                    //}).then((success)=>{
+                    //    location.reload();
+                    //});
+                }
+            })
+        }
+    });
+    }
+  
+  
+    
+    //function remove(clientId) {
+    //    swal({
+    //        title: "Are you sure?",
+    //        text: "Once deleted, you will not be able to recover your profile!",
+    //        icon: "warning",
+    //        buttons: true,
+    //        dangerMode: true,
+    //    },(willDelete)=>{
+    //        debugger;
+    //    if (willDelete) {
+    //        $.ajax({
+    //            type: "POST",
+    //            data: {
+    //                id: clientId
+    //            },
+    //            url: "/GeneralAgrement/delete",
+    //            dataType: "json",
+    //            success: function (response) {
+    //                debugger;
+    //                swal("Poof! Your profile has been deleted!", {
+    //                    icon: "success",
+    //                },
+    //                function () {
+    //                    window.location.href = "/GeneralAgrement/Index"
+    //                });
+
+                   
+    //            }
+    //        });
+    //    }
+    //}
+    //);
+    //};
+
+
+
+
+    $('.detail').click(function () {
+        var href = '@Url.Content("~/Admin/GeneralAgrement/Details")';
+        $('#CommonModalLabel').html("Details")
+        var id = $(this).attr('id');
+        debugger;
+        $.ajax({
+            url: href,
+            data: { id: id.substr(id.indexOf("_") + 1) },
+            success: function (result) {
+                if (result) {
+                    debugger;
+                    $('#CommonMC').html(result);
+                }
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+    })
+
+
+    $('#not').click(function () {
+        var href = '@Url.Content("~/Admin/GeneralAgrement/ShowNoOfExpGa")';
+
+        debugger;
+        $.ajax({
+            url: href,
+           
+            success: function (result) {
+          
+                var notification = alertify.notify('Expiring General Agreement Numbers  '+result, 'success', 5, function(){  console.log('dismissed'); });
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+    })
+
+</script>

@@ -1,0 +1,41 @@
+﻿@using FormCollectionHelper
+@model Samaj_Kalyan.Areas.Admin.Models.PA_PatnerNgoViewModel
+
+
+
+
+<tr>
+    @using (Html.BeginCollectionItem("PA_PartnerNgoViewModelList"))
+    {
+
+        <td class="sn-no">@ViewBag.Counter</td>
+        @*<td class="form-group ">*@
+        @Html.HiddenFor(model => model.PA_PatnerNGOs_ID)
+        @*   @Html.DropDownListFor(model => model.DesignationId, BusinessLogic.Service.CommonService.GetDesignation(), "--select one--", new { @class = "form-control" })*@
+        @*@Html.ValidationMessageFor(model => model.Examination)*@
+        @*</td>*@
+        <td class="form-group">
+            @*@Html.DropDownListFor(model => model.Desigination, BusinessLogic.Service.CommonService.GetDesignationName(), "--select one--", new { @class = "form-control" })*@
+            @Html.TextBoxFor(model => model.Ngo_Name, new { @class = "form-control ndep " })
+        </td>
+        <td class="form-group">
+
+            @Html.TextBoxFor(model => model.Ngo_Number, new { @class = "form-control ds" })
+            @*@Html.ValidationMessageFor(model => model.Examination)*@
+        </td>
+           <td class="form-group">
+
+            @Html.TextBoxFor(model => model.Amount, new { @class = "form-control ds" })
+            @*@Html.ValidationMessageFor(model => model.Examination)*@
+        </td>
+
+        <td class="action">
+            <button type="button" onclick="DeleteRow(this)" class="row-button btn btn-sm btn-danger btn-delete"><i class="fa fa-trash-o"></i>Remove</button>
+        </td>
+
+
+
+
+    }
+</tr>
+

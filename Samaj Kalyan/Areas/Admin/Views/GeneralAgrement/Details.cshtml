@@ -1,0 +1,166 @@
+﻿
+@model Samaj_Kalyan.Areas.Admin.Models.GeneralAgreementViewModel
+
+<div style="margin-top:10px">
+    <fieldset>
+       
+
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Name_Of_Ingo)
+                </b>
+
+            </span>
+            @*@Model.DateOfJoining.Value.ToShortDateString()*@
+            @*@Html.DisplayFor(x=>x.DOJNepali)*@
+            @Html.DisplayFor(x => x.Name_Of_Ingo)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Name_of_Ingo_Nepali)
+
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Name_of_Ingo_Nepali)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+              
+                    @Html.DisplayNameFor(x => x.Ga_Date)
+                </b>
+
+            </span>
+            @{
+                if (Model.Ga_Date.HasValue)
+                {
+                    var sdate = Model.Ga_Date.Value.ToShortDateString();
+                <span>
+                    @*@sdate*@
+                    @Html.DisplayFor(x => x.Ga_Date_Nepali)
+                </span> 
+                }
+               
+            }
+           
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Contact_Person)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Contact_Person)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Contact_Number)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Contact_Number)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Country)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Country)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Sector)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Sector)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Period)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Period)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Hq_Address)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Hq_Address)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Email)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Email)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.GA_TerminationDate)
+                </b>
+
+            </span>
+          
+            @{
+                if (Model.GA_TerminationDate.HasValue)
+                {
+                    var tdate = Model.GA_TerminationDate.Value.ToShortDateString();
+                    <span>
+
+                    @*@tdate*@
+                        @Html.DisplayFor(x => x.Ga_TerminationDate_Nepali)
+                </span>
+                }
+               
+
+               
+                
+            }
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Ga_Service_Charge)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Ga_Service_Charge)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Pre_Annum_Commitment_Amount)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Pre_Annum_Commitment_Amount)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Country_Official_Nepal_Address)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Country_Official_Nepal_Address)
+        </div>
+    </fieldset>
+
+</div>

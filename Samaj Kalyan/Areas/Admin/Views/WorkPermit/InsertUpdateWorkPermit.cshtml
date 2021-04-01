@@ -1,0 +1,390 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.WorkPermitViewModel
+@{
+    ViewBag.Title = "InsertUpdateGeneralAgreement";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+
+}
+
+@*<h2>InsertUpdateGeneralAgreement</h2>*@
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>*@
+
+<script src="~/Content/NepaliDatePicker/js/jquery-2.1.0.min.js"></script>
+<script src="~/Content/NepaliDatePicker/js/jquery.js"></script>
+<script src="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
+<link href="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+
+<div>
+    @if (ViewBag.success != null)
+    {
+        <div class="alert alert-success">
+            <strong>Well done!</strong> @ViewBag.success
+        </div>
+    }
+    @if (TempData["SuccessMsg"] != null)
+    {
+
+        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+            @TempData["SuccessMsg"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Msg"] != null)
+    {
+        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+            @TempData["Msg"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+@using (Html.BeginForm("InsertUpdateWorkPermit", "WorkPermit", FormMethod.Post, new { id = "InsertUpdateWorkPermit-form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.WorkPermitId)
+    
+    <fieldset>
+
+        <div class="content-table">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.GA_Id, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.GA_Id,Samaj_Kalyan.Utility.CommonUtility.GetIngoName(), new { @class = "form-control GA" })
+
+                    @Html.ValidationMessageFor(model => model.PA_Id, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PA_Id,  new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.PA_Id, Samaj_Kalyan.Utility.CommonUtility.Getpalist(Model.GA_Id), new { @class = "form-control PA" })
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.WorkPermitTypeId)
+                        @Html.DropDownListFor(model => model.WorkPermitTypeId,Samaj_Kalyan.Utility.CommonUtility.GetWorkPermitTypelist(), new { @class = "form-control WPT" })
+                        @*  @Html.DropDownListFor(model => model.ShiftType, BusinessLogic.Service.ShiftService.GetShiftType(), "--select one--", new { @class = "form-control shifttype" })*@
+                        @Html.ValidationMessageFor(model => model.WorkPermitTypeId, null, new { @class = "text-danger" })
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Council_sRegistrationNumber)
+                        @Html.TextBoxFor(model => model.Council_sRegistrationNumber, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.Council_sRegistrationNumber, null, new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.CouncilRegistrationDate)
+                        @Html.HiddenFor(model=>model.CouncilRegistrationDate )
+                        @Html.TextBoxFor(model => model.CouncilRegistrationDateNp, new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.NameOfApplicant)
+                        @Html.TextBoxFor(model => model.NameOfApplicant, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Country)
+                        @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+
+                    </div>
+                </div>
+             
+             
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.PassportNumber)
+
+                        @Html.TextBoxFor(model => model.PassportNumber, new { @class = "form-control  " })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.VisaDuration)
+                        @Html.TextBoxFor(model => model.VisaDuration, new { @class = "form-control ", @type = "number" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.ApplicationDesingation)
+                        @Html.TextBoxFor(model => model.ApplicationDesingation, new { @class = "form-control"})
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.DecisionDate)
+                        @Html.HiddenFor(model => model.DecisionDate, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.DecisionDateNp, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.VisaType)
+                        @Html.TextBoxFor(model => model.VisaType, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Remarks)
+                        @Html.TextBoxFor(model => model.Remarks, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+ 
+
+    <fieldset class="border p-1">
+        <legend> परिवारका सदस्य</legend>
+        <div class="box-header">
+            <h3 class="box-title"> </h3>
+            <div class="box-tools">
+                <button type="button" id="btn-AddEmployeeDetails" class="btn btn-primary btn-add pull-right"><i class="fa fa-plus"></i>Add More</button>
+            </div>
+        </div>
+        <div class="content-table">
+            <div id="Employe-details-table-div">
+                <div class="clearfix"></div>
+                <div id="Employe-detailsList">
+                                @if (Model != null && Model.WpaFamilyViewModelList != null)
+                                {
+                                    int counter = 1;
+                                    foreach (var item in Model.WpaFamilyViewModelList)
+                                    {
+                                        ViewBag.Counter = counter;
+                                        @Html.Partial("_wpaFamily", item)
+                                        counter++;
+                                    }
+                                }
+                    </div>
+                </div>
+            </div>
+        
+    </fieldset>
+    
+    <div class="btn-groups modal-footer">
+
+        <button type="submit" id="SaveB" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+
+
+    </div>
+}
+
+
+
+<script>
+                  
+    function DeleteRow(e) {
+        var section = $(e).closest('fieldset').find('legend').html();
+        var confirmValue = confirm("Are you sure to delete this " + section + " ?");
+        if (confirmValue) {
+            $(e).closest('section').remove();
+        }
+
+    }
+    $("#Employe-details-table-div").on('click', 'delete', function () {
+        debugger;
+        var delRow = $(this).closest('section');
+        $(delRow).remove();
+    });
+                    
+                        $('#btn-AddEmployeeDetails').on('click', function () {
+                           // var counter = $('#Employe-details-table-body').find('tr').length + 1;
+                            debugger;
+                            $.ajax({
+                                url: '@Url.Content("~/Admin/WorkPermit/AddWPFamilyMember")',
+                               // data: { counter: counter },
+                                success: function (result) {
+                                    if (result) {
+                                        $('#Employe-details-table-div').append(result);
+                                    }
+                                },
+                                error: function () {
+                                    alert('error in calling ajax !!')
+                                }
+                            });
+
+                        });
+
+
+
+
+
+                        //$('#imagePicker').on('change', function () {
+                        //    if (this.files && this.files[0]) {
+                        //        var chk = isImage(this.files[0].name)
+                        //        if (!chk) {
+                        //            alert('Invalid File Type!! Please select jpg or png file!!');
+                        //            return;
+                        //        }
+                        //        var reader = new FileReader();
+
+                        //        reader.onload = function (e) {
+                        //            $('#applicantImage').attr('src', e.target.result);
+                        //            $('#ImageChange').val(true);
+                        //        }
+
+                        //        reader.readAsDataURL(this.files[0]);
+                        //    }
+                        //});
+                        //function isImage(filename) {
+                        //    var ext = getExtension(filename);
+                        //    switch (ext.toLowerCase()) {
+                        //        case 'jpg':
+                        //        case 'png':
+                        //        case 'jpeg':
+                        //            return true;
+                        //    }
+                        //    return false;
+                        //}
+                        //function getExtension(filename) {
+                        //    var parts = filename.split('.');
+                        //    return parts[parts.length - 1];
+                        //}
+                        //function FileName(e) {
+                        //    var filename = $(e).closest('tr').find('.filename');
+                        //    if ($(filename).val() == '' || $(filename).val() == 'undefined')
+                        //        $(filename).val(e.value.replace(/^.*\\/, ''))
+
+                        //}
+</script>
+<script>
+
+    $('#SaveB').on('click', function () {
+        //alert('dd');
+        setCookie("insert", "true", 20);
+        //alert(getCookie("insert"));
+
+    });
+
+    function getCookie(cname) {
+        debugger;
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exSecond) {
+        debugger;
+        var d = new Date();
+        d.setTime(d.getTime() + (exSecond * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    $(function () {
+        debugger;
+        $("#InsertUpdateWorkPermit-form").on('change', '.GA', function () {
+            debugger;
+            //  alert("");
+            debugger;
+            var id = $(this).val();
+           
+            var json = { id: id };
+            var project = $(this).closest('.row').find(".PA")
+            $(project).find('option').remove()
+           // var MunVdc = $(this).closest('tr').find(".VDCMUN")
+            //$(district).empty();
+            //$(MunVdc).empty();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetPaByGaId", "WorkPermit")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                debugger;
+                    $(project).append('<option value="">--SELECT PA--</option>');
+                    $.each(data, function (key, value) {
+                        $(project).append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                    });
+                }
+            });
+        });
+    });
+
+    $(function () {
+        debugger;
+        $("#InsertUpdateWorkPermit-form").on('change', '.WPT', function () {
+            debugger;
+            //  alert("");
+            debugger;
+            var id = $(this).val();
+            if (id == 3) {
+                $(".p-1").hide();
+            }
+            else {
+                $(".p-1").show();
+            }
+    
+        });
+    });
+
+</script>
+
+
+
+
+<script>
+
+    $('#Ga_Date_Nepali').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+        ndpEnglishInput: 'Ga_Date'
+    });
+    $('#Ga_TerminationDate_Nepali').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+        ndpEnglishInput: 'GA_TerminationDate'
+    });
+
+
+    $('#Ga_Date_Nepali').change(function () {
+        $('#Ga_Date').val(BS2AD($('#Ga_Date_Nepali').val()));
+    });
+    $('#Ga_TerminationDate_Nepali').change(function () {
+        $('#GA_TerminationDate').val(BS2AD($('#Ga_TerminationDate_Nepali').val()));
+    });
+
+</script>
+

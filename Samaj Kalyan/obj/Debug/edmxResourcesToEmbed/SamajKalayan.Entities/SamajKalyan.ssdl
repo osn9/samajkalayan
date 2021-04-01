@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SamajkalyanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GA_Attachment">
+    <Key>
+      <PropertyRef Name="GA_Attachment_ID" />
+    </Key>
+    <Property Name="GA_Attachment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Scan_GA_Location" Type="nvarchar" MaxLength="500" />
+    <Property Name="PA_Attachment_Location" Type="nvarchar" MaxLength="500" />
+    <Property Name="GeneralAgreement_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="GeneralAgreement">
+    <Key>
+      <PropertyRef Name="GeneralAgreement_ID" />
+    </Key>
+    <Property Name="GeneralAgreement_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Of_Ingo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name_of_Ingo_Nepali" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ga_Date_Nepali" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ga_Date" Type="date" />
+    <Property Name="Period" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pre_Annum_Commitment_Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Ga_Service_Charge" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Sector" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hq_Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Contact_Person" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country_Official_Nepal_Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Contact_Number" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="GA_TerminationDate" Type="date" />
+    <Property Name="Ga_TerminationDate_Nepali" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="DeletdedDate" Type="date" />
+    <Property Name="Scan_GA_Location" Type="nvarchar" MaxLength="220" />
+    <Property Name="PA_Attachment_Location" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="HandOver_TakeOver">
+    <Key>
+      <PropertyRef Name="HandOver_TakeOverId" />
+    </Key>
+    <Property Name="HandOver_TakeOverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GA_Id" Type="int" />
+    <Property Name="PA_Id" Type="int" />
+    <Property Name="ApplicationRegistrationNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistrationDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistrationDate" Type="date" />
+    <Property Name="AssestReciverName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DetailsOfAssest" Type="nvarchar" MaxLength="500" />
+    <Property Name="TotalValueOfAssest" Type="nvarchar" MaxLength="50" />
+    <Property Name="DecisionDate" Type="date" />
+    <Property Name="DecisionDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="SummaryOfDecision" Type="nvarchar" MaxLength="100" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdateDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Import_DutyFreeRecommendation">
+    <Key>
+      <PropertyRef Name="ImportId" />
+    </Key>
+    <Property Name="ImportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GA_Id" Type="int" />
+    <Property Name="PA_Id" Type="int" />
+    <Property Name="Council_RegistrtionNumber" Type="int" />
+    <Property Name="CouncilRegistrationDate" Type="date" />
+    <Property Name="CouncilRegistrationDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="DonnerName" Type="nvarchar" MaxLength="150" />
+    <Property Name="DonnerAddress" Type="nchar" MaxLength="10" />
+    <Property Name="DiscriptionOfGoods" Type="nvarchar" MaxLength="500" />
+    <Property Name="InvoiceNumber" Type="int" />
+    <Property Name="InvoiceDate" Type="date" />
+    <Property Name="InvoiceDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalAmountForieignCurrency" Type="money" />
+    <Property Name="TotalAmountNepaliCurrency" Type="money" />
+    <Property Name="DecisionDate" Type="date" />
+    <Property Name="DecisionDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="Import_DutyType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="UpDatedBy" Type="int" />
+    <Property Name="UpdateDate" Type="date" />
+  </EntityType>
+  <EntityType Name="IngoRenewal">
+    <Key>
+      <PropertyRef Name="RenewalId" />
+    </Key>
+    <Property Name="RenewalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngoId" Type="int" Nullable="false" />
+    <Property Name="Period" Type="int" />
+    <Property Name="RenewCharge" Type="int" />
+    <Property Name="RenewalDateNP" Type="nvarchar" MaxLength="500" />
+    <Property Name="RenewDate" Type="date" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="DeletetDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="FileLocation" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="IngoRewnewalDocument">
+    <Key>
+      <PropertyRef Name="DocumentId" />
+    </Key>
+    <Property Name="DocumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentLocation" Type="nvarchar" MaxLength="500" />
+    <Property Name="RewnewalId" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="IngoTermination">
+    <Key>
+      <PropertyRef Name="TerminationId" />
+    </Key>
+    <Property Name="TerminationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IngoId" Type="int" />
+    <Property Name="TerminationDateNp" Type="nvarchar" MaxLength="150" />
+    <Property Name="TerminationDate" Type="date" />
+    <Property Name="NameOfAssest" Type="nvarchar" MaxLength="500" />
+    <Property Name="EvaluationOfReportAttached" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DeletdDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="UpdateBy" Type="int" />
+    <Property Name="UpdateDate" Type="date" />
+  </EntityType>
+  <EntityType Name="PA_PartnerNgo">
+    <Key>
+      <PropertyRef Name="PA_PatnerNGOs_ID" />
+    </Key>
+    <Property Name="PA_PatnerNGOs_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ngo_Number" Type="int" />
+    <Property Name="Ngo_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProjectAgreement_ID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PA_Sector">
+    <Key>
+      <PropertyRef Name="ProjectAgreementSector_ID" />
+    </Key>
+    <Property Name="ProjectAgreementSector_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sector" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProjectAgreement_ID" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PA_Years">
+    <Key>
+      <PropertyRef Name="ProjectAgreement_Year_Id" />
+    </Key>
+    <Property Name="ProjectAgreement_Year_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Project_Agreement_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="PrincipaleConstantOfVolunter">
+    <Key>
+      <PropertyRef Name="VolunteerID" />
+    </Key>
+    <Property Name="VolunteerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GA_Id" Type="int" />
+    <Property Name="PA_Id" Type="int" />
+    <Property Name="Council'sRagistrationNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="[Council'sRagistrationDate" Type="date" />
+    <Property Name="[Council'sRagistrationDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="NameOfAppicant" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassportNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="VisaDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ApplicationDesingation" Type="nvarchar" MaxLength="50" />
+    <Property Name="ApplicationSector" Type="nvarchar" MaxLength="50" />
+    <Property Name="Agreement" Type="nvarchar" MaxLength="150" />
+    <Property Name="ServiceReciverNGOSName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DecisionDate" Type="date" />
+    <Property Name="DecisionDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreateedBy" Type="int" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="ProjectAgreement">
+    <Key>
+      <PropertyRef Name="ProjectAgreement_ID" />
+    </Key>
+    <Property Name="ProjectAgreement_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Of_Project" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name_Of_Project_Nepali" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pa_Sign_DateNepali" Type="nvarchar" MaxLength="150" />
+    <Property Name="PA_Sign_Date" Type="date" />
+    <Property Name="Doner" Type="nvarchar" MaxLength="100" />
+    <Property Name="GeneralAgreement_ID" Type="int" />
+    <Property Name="District_ID" Type="int" />
+    <Property Name="Local_Level_ID" Type="int" />
+    <Property Name="Provience_ID" Type="int" />
+    <Property Name="Banking_Status" Type="bit" />
+    <Property Name="Name_Of_Bank" Type="nvarchar" MaxLength="50" />
+    <Property Name="Account_NO" Type="nvarchar" MaxLength="150" />
+    <Property Name="Total_Budget" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Admin_Cost" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Program_Cost" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Project_Period" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="No_Of_Expertriate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="UpDatedBy" Type="int" />
+    <Property Name="UpDatedDaye" Type="date" />
+  </EntityType>
+  <EntityType Name="ProjectAgreement_Districts">
+    <Key>
+      <PropertyRef Name="ProjectAgreementBudgetBreakDown_ID" />
+    </Key>
+    <Property Name="ProjectAgreementBudgetBreakDown_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictID" Type="int" />
+    <Property Name="DistrictWiseAmmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProjectAgreementID" Type="int" />
+    <Property Name="Locallevel" Type="int" />
+    <Property Name="ProvienceId" Type="int" />
+  </EntityType>
+  <EntityType Name="ProvincesDistrictSetup">
+    <Key>
+      <PropertyRef Name="ProvincesDistrictId" />
+    </Key>
+    <Property Name="ProvincesDistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReferenceDistrictId" Type="int" />
+    <Property Name="DistrictName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ProvincesId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProvincesMunType">
+    <Key>
+      <PropertyRef Name="ProvinceMUNTypeId" />
+    </Key>
+    <Property Name="ProvinceMUNTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="provincesSetup">
+    <Key>
+      <PropertyRef Name="provincesId" />
+    </Key>
+    <Property Name="provincesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="provincesName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="provincesVDCDetails">
+    <Key>
+      <PropertyRef Name="ProvincesVDCDetailsID" />
+    </Key>
+    <Property Name="ProvincesVDCDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VDCName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ProvincesId" Type="int" Nullable="false" />
+    <Property Name="ProvincesDistrictId" Type="int" Nullable="false" />
+    <Property Name="VdcOrMunicipilityTypeId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VehicleAuction">
+    <Key>
+      <PropertyRef Name="VehicleAuctionId" />
+    </Key>
+    <Property Name="VehicleAuctionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GA_ID" Type="int" />
+    <Property Name="PA_ID" Type="int" />
+    <Property Name="ApplicationRegistrationNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistrationDate" Type="date" />
+    <Property Name="RegistrationDatep" Type="nvarchar" MaxLength="50" />
+    <Property Name="VehicleType" Type="nvarchar" MaxLength="50" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="DecisionDate" Type="date" />
+    <Property Name="DecisionDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="SummaryOfDecision" Type="nvarchar" MaxLength="500" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkPermit">
+    <Key>
+      <PropertyRef Name="WorkPermitId" />
+    </Key>
+    <Property Name="WorkPermitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkPermitTypeId" Type="int" />
+    <Property Name="PA_Id" Type="int" />
+    <Property Name="GA_Id" Type="int" />
+    <Property Name="Council'sRegistrationNumber" Type="int" />
+    <Property Name="CouncilRegistrationDate" Type="date" />
+    <Property Name="CouncilRegistrationDateNp" Type="nvarchar" MaxLength="50" />
+    <Property Name="NameOfApplicant" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country" Type="nvarchar" MaxLength="100" />
+    <Property Name="PassportNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="VisaDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ApplicationDesingation" Type="nvarchar" MaxLength="50" />
+    <Property Name="DecisionDate" Type="date" />
+    <Property Name="DecisionDateNp" Type="nvarchar" MaxLength="100" />
+    <Property Name="VisaType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="UpDatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="date" />
+  </EntityType>
+  <EntityType Name="WorKPermitType">
+    <Key>
+      <PropertyRef Name="WorkPermitTypeId" />
+    </Key>
+    <Property Name="WorkPermitTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="UdatedDate" Type="date" />
+    <Property Name="DeletedDate" Type="date" />
+    <Property Name="DeletedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="WpaFamily">
+    <Key>
+      <PropertyRef Name="WPAFamilyId" />
+    </Key>
+    <Property Name="WPAFamilyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkPermitId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="PassportNO" Type="nvarchar" MaxLength="500" />
+    <Property Name="VisaDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="VisaType" Type="nvarchar" MaxLength="50" />
+    <Property Name="DicisionDate" Type="date" />
+    <Property Name="DicisionDateNp" Type="nvarchar" MaxLength="100" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="100" />
+    <Property Name="remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="UpdatedDate" Type="date" />
+    <Property Name="UpdatedBy" Type="int" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="DeletdDate" Type="date" />
+  </EntityType>
+  <Association Name="FK_GA_Attachment_GeneralAgreement">
+    <End Role="GeneralAgreement" Type="Self.GeneralAgreement" Multiplicity="0..1" />
+    <End Role="GA_Attachment" Type="Self.GA_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="GA_Attachment">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HandOver_TakeOver_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="HandOver_TakeOver" Type="Self.HandOver_TakeOver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="HandOver_TakeOver">
+        <PropertyRef Name="PA_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Import_DutyFreeRecommendation_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="Import_DutyFreeRecommendation" Type="Self.Import_DutyFreeRecommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="Import_DutyFreeRecommendation">
+        <PropertyRef Name="PA_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngoRenewal_GeneralAgreement">
+    <End Role="GeneralAgreement" Type="Self.GeneralAgreement" Multiplicity="1" />
+    <End Role="IngoRenewal" Type="Self.IngoRenewal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="IngoRenewal">
+        <PropertyRef Name="IngoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngoRewnewalDocument_IngoRenewal">
+    <End Role="IngoRenewal" Type="Self.IngoRenewal" Multiplicity="0..1" />
+    <End Role="IngoRewnewalDocument" Type="Self.IngoRewnewalDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IngoRenewal">
+        <PropertyRef Name="RenewalId" />
+      </Principal>
+      <Dependent Role="IngoRewnewalDocument">
+        <PropertyRef Name="RewnewalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngoTermination_GeneralAgreement">
+    <End Role="GeneralAgreement" Type="Self.GeneralAgreement" Multiplicity="0..1" />
+    <End Role="IngoTermination" Type="Self.IngoTermination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="IngoTermination">
+        <PropertyRef Name="IngoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PA_PartnerNgo_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="PA_PartnerNgo" Type="Self.PA_PartnerNgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PA_PartnerNgo">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PA_Sector_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="PA_Sector" Type="Self.PA_Sector" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PA_Sector">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PA_Years_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="PA_Years" Type="Self.PA_Years" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PA_Years">
+        <PropertyRef Name="Project_Agreement_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrincipaleConstantOfVolunter_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="PrincipaleConstantOfVolunter" Type="Self.PrincipaleConstantOfVolunter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PrincipaleConstantOfVolunter">
+        <PropertyRef Name="PA_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectAgreement_Districts_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="ProjectAgreement_Districts" Type="Self.ProjectAgreement_Districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="ProjectAgreement_Districts">
+        <PropertyRef Name="ProjectAgreementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectAgreement_GeneralAgreement">
+    <End Role="GeneralAgreement" Type="Self.GeneralAgreement" Multiplicity="0..1" />
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="ProjectAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VehicleAuction_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="VehicleAuction" Type="Self.VehicleAuction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="VehicleAuction">
+        <PropertyRef Name="PA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkPermit_ProjectAgreement">
+    <End Role="ProjectAgreement" Type="Self.ProjectAgreement" Multiplicity="0..1" />
+    <End Role="WorkPermit" Type="Self.WorkPermit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="WorkPermit">
+        <PropertyRef Name="PA_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkPermit_WorKPermitType">
+    <End Role="WorKPermitType" Type="Self.WorKPermitType" Multiplicity="0..1" />
+    <End Role="WorkPermit" Type="Self.WorkPermit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorKPermitType">
+        <PropertyRef Name="WorkPermitTypeId" />
+      </Principal>
+      <Dependent Role="WorkPermit">
+        <PropertyRef Name="WorkPermitTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WpaFamily_WorkPermit">
+    <End Role="WorkPermit" Type="Self.WorkPermit" Multiplicity="0..1" />
+    <End Role="WpaFamily" Type="Self.WpaFamily" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkPermit">
+        <PropertyRef Name="WorkPermitId" />
+      </Principal>
+      <Dependent Role="WpaFamily">
+        <PropertyRef Name="WorkPermitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SamajkalyanModelStoreContainer">
+    <EntitySet Name="GA_Attachment" EntityType="Self.GA_Attachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralAgreement" EntityType="Self.GeneralAgreement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HandOver_TakeOver" EntityType="Self.HandOver_TakeOver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Import_DutyFreeRecommendation" EntityType="Self.Import_DutyFreeRecommendation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngoRenewal" EntityType="Self.IngoRenewal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngoRewnewalDocument" EntityType="Self.IngoRewnewalDocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IngoTermination" EntityType="Self.IngoTermination" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PA_PartnerNgo" EntityType="Self.PA_PartnerNgo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PA_Sector" EntityType="Self.PA_Sector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PA_Years" EntityType="Self.PA_Years" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrincipaleConstantOfVolunter" EntityType="Self.PrincipaleConstantOfVolunter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectAgreement" EntityType="Self.ProjectAgreement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectAgreement_Districts" EntityType="Self.ProjectAgreement_Districts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProvincesDistrictSetup" EntityType="Self.ProvincesDistrictSetup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProvincesMunType" EntityType="Self.ProvincesMunType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincesSetup" EntityType="Self.provincesSetup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincesVDCDetails" EntityType="Self.provincesVDCDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehicleAuction" EntityType="Self.VehicleAuction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkPermit" EntityType="Self.WorkPermit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorKPermitType" EntityType="Self.WorKPermitType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WpaFamily" EntityType="Self.WpaFamily" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GA_Attachment_GeneralAgreement" Association="Self.FK_GA_Attachment_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreement" />
+      <End Role="GA_Attachment" EntitySet="GA_Attachment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HandOver_TakeOver_ProjectAgreement" Association="Self.FK_HandOver_TakeOver_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="HandOver_TakeOver" EntitySet="HandOver_TakeOver" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Import_DutyFreeRecommendation_ProjectAgreement" Association="Self.FK_Import_DutyFreeRecommendation_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="Import_DutyFreeRecommendation" EntitySet="Import_DutyFreeRecommendation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngoRenewal_GeneralAgreement" Association="Self.FK_IngoRenewal_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreement" />
+      <End Role="IngoRenewal" EntitySet="IngoRenewal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngoRewnewalDocument_IngoRenewal" Association="Self.FK_IngoRewnewalDocument_IngoRenewal">
+      <End Role="IngoRenewal" EntitySet="IngoRenewal" />
+      <End Role="IngoRewnewalDocument" EntitySet="IngoRewnewalDocument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngoTermination_GeneralAgreement" Association="Self.FK_IngoTermination_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreement" />
+      <End Role="IngoTermination" EntitySet="IngoTermination" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PA_PartnerNgo_ProjectAgreement" Association="Self.FK_PA_PartnerNgo_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="PA_PartnerNgo" EntitySet="PA_PartnerNgo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PA_Sector_ProjectAgreement" Association="Self.FK_PA_Sector_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="PA_Sector" EntitySet="PA_Sector" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PA_Years_ProjectAgreement" Association="Self.FK_PA_Years_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="PA_Years" EntitySet="PA_Years" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrincipaleConstantOfVolunter_ProjectAgreement" Association="Self.FK_PrincipaleConstantOfVolunter_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="PrincipaleConstantOfVolunter" EntitySet="PrincipaleConstantOfVolunter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectAgreement_Districts_ProjectAgreement" Association="Self.FK_ProjectAgreement_Districts_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="ProjectAgreement_Districts" EntitySet="ProjectAgreement_Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectAgreement_GeneralAgreement" Association="Self.FK_ProjectAgreement_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreement" />
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VehicleAuction_ProjectAgreement" Association="Self.FK_VehicleAuction_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="VehicleAuction" EntitySet="VehicleAuction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkPermit_ProjectAgreement" Association="Self.FK_WorkPermit_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreement" />
+      <End Role="WorkPermit" EntitySet="WorkPermit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkPermit_WorKPermitType" Association="Self.FK_WorkPermit_WorKPermitType">
+      <End Role="WorKPermitType" EntitySet="WorKPermitType" />
+      <End Role="WorkPermit" EntitySet="WorkPermit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WpaFamily_WorkPermit" Association="Self.FK_WpaFamily_WorkPermit">
+      <End Role="WorkPermit" EntitySet="WorkPermit" />
+      <End Role="WpaFamily" EntitySet="WpaFamily" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,218 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.ProjectAgreementViewModel
+
+<div style="margin-top:10px">
+    <fieldset>
+        <legend></legend>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.IngoName)
+                </b>
+
+            </span>
+            @*@Model.DateOfJoining.Value.ToShortDateString()*@
+            @*@Html.DisplayFor(x=>x.DOJNepali)*@
+            @Html.DisplayFor(x => x.IngoName)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Name_Of_Project)
+                </b>
+
+            </span>
+            @*@Model.DateOfJoining.Value.ToShortDateString()*@
+            @*@Html.DisplayFor(x=>x.DOJNepali)*@
+            @Html.DisplayFor(x => x.Name_Of_Project)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Name_Of_Project_Nepali)
+
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Name_Of_Project_Nepali)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.PA_Sign_Date)
+                </b>
+
+            </span>
+         
+            @{
+                if (Model.PA_Sign_Date.HasValue)
+                {
+                    var sdate = Model.PA_Sign_Date.Value.ToShortDateString();
+                    <span>
+                        @*@sdate*@
+                        @Html.DisplayFor(x => x.Pa_Sign_DateNepali)
+                    </span>
+                }
+
+            }
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Doner)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Doner)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Name_Of_Bank)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Name_Of_Bank)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Account_NO)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Account_NO)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Total_Budget)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Total_Budget)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Admin_Cost)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Admin_Cost)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Program_Cost)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Program_Cost)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.Project_Period)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.Project_Period)
+        </div>
+        <div class="row">
+            <span class="col-md-6">
+                <b>
+                    @Html.DisplayNameFor(x => x.No_Of_Expertriate)
+                </b>
+
+            </span>
+            @Html.DisplayFor(x => x.No_Of_Expertriate)
+        </div>
+    </fieldset>
+    <fieldset class="border p-1">
+        <legend>
+            साझेदारहरू
+        </legend>
+        @foreach (var item in Model.PA_PartnerNgoViewModelList)
+        {
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Ngo_Name)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.Ngo_Name)
+            </div>
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Ngo_Number)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.Ngo_Number)
+            </div>
+
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Amount)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.Amount)
+            </div>
+        }
+        <hr />
+
+    </fieldset>
+    <fieldset class="border p-1">
+        <legend>
+            जिल्ला अनुसार
+            बजेट
+        </legend>
+        @foreach (var item in Model.ProjectAgreement_DistrictsViewModelList)
+        {
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.ProvienceId)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.ProvienceName)
+            </div>
+
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.DistrictID)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.DistrictName)
+            </div>
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.Locallevel)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.locallevelName)
+            </div>
+            <div class="row">
+                <span class="col-md-6">
+                    <b>
+                        @Html.DisplayNameFor(x => item.DistrictWiseAmmount)
+                    </b>
+
+                </span>
+                @Html.DisplayFor(x => item.DistrictWiseAmmount)
+            </div>
+            <hr />
+            
+
+        }
+    </fieldset>
+</div>

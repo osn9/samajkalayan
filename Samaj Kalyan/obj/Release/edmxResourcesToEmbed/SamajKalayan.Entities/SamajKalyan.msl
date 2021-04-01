@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SamajkalyanModelStoreContainer" CdmEntityContainer="SamajkalyanEntities">
+    <EntitySetMapping Name="zes">
+      <EntityTypeMapping TypeName="SamajkalyanModel.ze">
+        <MappingFragment StoreEntitySet="GA_Attachment">
+          <ScalarProperty Name="GeneralAgreement_ID" ColumnName="GeneralAgreement_ID" />
+          <ScalarProperty Name="PA_Attachment_Location" ColumnName="PA_Attachment_Location" />
+          <ScalarProperty Name="Scan_GA_Location" ColumnName="Scan_GA_Location" />
+          <ScalarProperty Name="GA_Attachment_ID" ColumnName="GA_Attachment_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralAgreements">
+      <EntityTypeMapping TypeName="SamajkalyanModel.GeneralAgreement">
+        <MappingFragment StoreEntitySet="GeneralAgreement">
+          <ScalarProperty Name="PA_Attachment_Location" ColumnName="PA_Attachment_Location" />
+          <ScalarProperty Name="Scan_GA_Location" ColumnName="Scan_GA_Location" />
+          <ScalarProperty Name="DeletdedDate" ColumnName="DeletdedDate" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Ga_TerminationDate_Nepali" ColumnName="Ga_TerminationDate_Nepali" />
+          <ScalarProperty Name="GA_TerminationDate" ColumnName="GA_TerminationDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+          <ScalarProperty Name="Country_Official_Nepal_Address" ColumnName="Country_Official_Nepal_Address" />
+          <ScalarProperty Name="Contact_Person" ColumnName="Contact_Person" />
+          <ScalarProperty Name="Hq_Address" ColumnName="Hq_Address" />
+          <ScalarProperty Name="Sector" ColumnName="Sector" />
+          <ScalarProperty Name="Ga_Service_Charge" ColumnName="Ga_Service_Charge" />
+          <ScalarProperty Name="Pre_Annum_Commitment_Amount" ColumnName="Pre_Annum_Commitment_Amount" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="Ga_Date" ColumnName="Ga_Date" />
+          <ScalarProperty Name="Ga_Date_Nepali" ColumnName="Ga_Date_Nepali" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name_of_Ingo_Nepali" ColumnName="Name_of_Ingo_Nepali" />
+          <ScalarProperty Name="Name_Of_Ingo" ColumnName="Name_Of_Ingo" />
+          <ScalarProperty Name="GeneralAgreement_ID" ColumnName="GeneralAgreement_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PA_PartnerNgo">
+      <EntityTypeMapping TypeName="SamajkalyanModel.PA_PartnerNgo">
+        <MappingFragment StoreEntitySet="PA_PartnerNgo">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ProjectAgreement_ID" ColumnName="ProjectAgreement_ID" />
+          <ScalarProperty Name="Ngo_Name" ColumnName="Ngo_Name" />
+          <ScalarProperty Name="Ngo_Number" ColumnName="Ngo_Number" />
+          <ScalarProperty Name="PA_PatnerNGOs_ID" ColumnName="PA_PatnerNGOs_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PA_Sector">
+      <EntityTypeMapping TypeName="SamajkalyanModel.PA_Sector">
+        <MappingFragment StoreEntitySet="PA_Sector">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ProjectAgreement_ID" ColumnName="ProjectAgreement_ID" />
+          <ScalarProperty Name="Sector" ColumnName="Sector" />
+          <ScalarProperty Name="ProjectAgreementSector_ID" ColumnName="ProjectAgreementSector_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PA_Years">
+      <EntityTypeMapping TypeName="SamajkalyanModel.PA_Years">
+        <MappingFragment StoreEntitySet="PA_Years">
+          <ScalarProperty Name="Project_Agreement_Id" ColumnName="Project_Agreement_Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="ProjectAgreement_Year_Id" ColumnName="ProjectAgreement_Year_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectAgreement_Districts">
+      <EntityTypeMapping TypeName="SamajkalyanModel.ProjectAgreement_Districts">
+        <MappingFragment StoreEntitySet="ProjectAgreement_Districts">
+          <ScalarProperty Name="ProvienceId" ColumnName="ProvienceId" />
+          <ScalarProperty Name="Locallevel" ColumnName="Locallevel" />
+          <ScalarProperty Name="ProjectAgreementID" ColumnName="ProjectAgreementID" />
+          <ScalarProperty Name="DistrictWiseAmmount" ColumnName="DistrictWiseAmmount" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="ProjectAgreementBudgetBreakDown_ID" ColumnName="ProjectAgreementBudgetBreakDown_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProvincesDistrictSetups">
+      <EntityTypeMapping TypeName="SamajkalyanModel.ProvincesDistrictSetup">
+        <MappingFragment StoreEntitySet="ProvincesDistrictSetup">
+          <ScalarProperty Name="ProvincesId" ColumnName="ProvincesId" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="ReferenceDistrictId" ColumnName="ReferenceDistrictId" />
+          <ScalarProperty Name="ProvincesDistrictId" ColumnName="ProvincesDistrictId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProvincesMunTypes">
+      <EntityTypeMapping TypeName="SamajkalyanModel.ProvincesMunType">
+        <MappingFragment StoreEntitySet="ProvincesMunType">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="ProvinceMUNTypeId" ColumnName="ProvinceMUNTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincesSetups">
+      <EntityTypeMapping TypeName="SamajkalyanModel.provincesSetup">
+        <MappingFragment StoreEntitySet="provincesSetup">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="provincesName" ColumnName="provincesName" />
+          <ScalarProperty Name="provincesId" ColumnName="provincesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincesVDCDetails">
+      <EntityTypeMapping TypeName="SamajkalyanModel.provincesVDCDetail">
+        <MappingFragment StoreEntitySet="provincesVDCDetails">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="VdcOrMunicipilityTypeId" ColumnName="VdcOrMunicipilityTypeId" />
+          <ScalarProperty Name="ProvincesDistrictId" ColumnName="ProvincesDistrictId" />
+          <ScalarProperty Name="ProvincesId" ColumnName="ProvincesId" />
+          <ScalarProperty Name="VDCName" ColumnName="VDCName" />
+          <ScalarProperty Name="ProvincesVDCDetailsID" ColumnName="ProvincesVDCDetailsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngoRenewals">
+      <EntityTypeMapping TypeName="SamajkalyanModel.IngoRenewal">
+        <MappingFragment StoreEntitySet="IngoRenewal">
+          <ScalarProperty Name="FileLocation" ColumnName="FileLocation" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletetDate" ColumnName="DeletetDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="RenewDate" ColumnName="RenewDate" />
+          <ScalarProperty Name="RenewalDateNP" ColumnName="RenewalDateNP" />
+          <ScalarProperty Name="RenewCharge" ColumnName="RenewCharge" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ScalarProperty Name="IngoId" ColumnName="IngoId" />
+          <ScalarProperty Name="RenewalId" ColumnName="RenewalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngoTerminations">
+      <EntityTypeMapping TypeName="SamajkalyanModel.IngoTermination">
+        <MappingFragment StoreEntitySet="IngoTermination">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletdDate" ColumnName="DeletdDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="EvaluationOfReportAttached" ColumnName="EvaluationOfReportAttached" />
+          <ScalarProperty Name="NameOfAssest" ColumnName="NameOfAssest" />
+          <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+          <ScalarProperty Name="TerminationDateNp" ColumnName="TerminationDateNp" />
+          <ScalarProperty Name="IngoId" ColumnName="IngoId" />
+          <ScalarProperty Name="TerminationId" ColumnName="TerminationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectAgreements">
+      <EntityTypeMapping TypeName="SamajkalyanModel.ProjectAgreement">
+        <MappingFragment StoreEntitySet="ProjectAgreement">
+          <ScalarProperty Name="UpDatedDaye" ColumnName="UpDatedDaye" />
+          <ScalarProperty Name="UpDatedBy" ColumnName="UpDatedBy" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="No_Of_Expertriate" ColumnName="No_Of_Expertriate" />
+          <ScalarProperty Name="Project_Period" ColumnName="Project_Period" />
+          <ScalarProperty Name="Program_Cost" ColumnName="Program_Cost" />
+          <ScalarProperty Name="Admin_Cost" ColumnName="Admin_Cost" />
+          <ScalarProperty Name="Total_Budget" ColumnName="Total_Budget" />
+          <ScalarProperty Name="Account_NO" ColumnName="Account_NO" />
+          <ScalarProperty Name="Name_Of_Bank" ColumnName="Name_Of_Bank" />
+          <ScalarProperty Name="Banking_Status" ColumnName="Banking_Status" />
+          <ScalarProperty Name="Provience_ID" ColumnName="Provience_ID" />
+          <ScalarProperty Name="Local_Level_ID" ColumnName="Local_Level_ID" />
+          <ScalarProperty Name="District_ID" ColumnName="District_ID" />
+          <ScalarProperty Name="GeneralAgreement_ID" ColumnName="GeneralAgreement_ID" />
+          <ScalarProperty Name="Doner" ColumnName="Doner" />
+          <ScalarProperty Name="PA_Sign_Date" ColumnName="PA_Sign_Date" />
+          <ScalarProperty Name="Pa_Sign_DateNepali" ColumnName="Pa_Sign_DateNepali" />
+          <ScalarProperty Name="Name_Of_Project_Nepali" ColumnName="Name_Of_Project_Nepali" />
+          <ScalarProperty Name="Name_Of_Project" ColumnName="Name_Of_Project" />
+          <ScalarProperty Name="ProjectAgreement_ID" ColumnName="ProjectAgreement_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

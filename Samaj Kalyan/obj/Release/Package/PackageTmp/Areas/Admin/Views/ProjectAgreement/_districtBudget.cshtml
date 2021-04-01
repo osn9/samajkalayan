@@ -1,0 +1,48 @@
+﻿
+@using FormCollectionHelper
+@model Samaj_Kalyan.Areas.Admin.Models.ProjectAgreement_DistrictsViewModel
+
+
+
+
+<tr>
+    @using (Html.BeginCollectionItem("ProjectAgreement_DistrictsViewModelList"))
+    {
+
+        <td class="sn-no">@ViewBag.Counter</td>
+        @*<td class="form-group ">*@
+        @Html.HiddenFor(model => model.ProjectAgreementBudgetBreakDown_ID)
+        @*   @Html.DropDownListFor(model => model.DesignationId, BusinessLogic.Service.CommonService.GetDesignation(), "--select one--", new { @class = "form-control" })*@
+        @*@Html.ValidationMessageFor(model => model.Examination)*@
+        @*</td>*@
+        <td class="form-group">
+            @*@Html.DropDownListFor(model => model.Desigination, BusinessLogic.Service.CommonService.GetDesignationName(), "--select one--", new { @class = "form-control" })*@
+            @*@Html.TextBoxFor(model => model.DistrictID, new { @class = "form-control ndep " })*@
+            @Html.DropDownListFor(model => model.ProvienceId, Samaj_Kalyan.Utility.CommonUtility.GetProvience(), "--छान्नुहोस्--", new { @class = "form-control Provience" })
+        </td>
+        <td class="form-group">
+            @Html.DropDownListFor(model => model.DistrictID, Samaj_Kalyan.Utility.CommonUtility.GetDistrict(Model.ProvienceId), "--छान्नुहोस्--", new { @class = "form-control district" })
+          
+            @*@Html.ValidationMessageFor(model => model.Examination)*@
+        </td>
+        <td class="form-group">
+            @Html.DropDownListFor(model => model.Locallevel, Samaj_Kalyan.Utility.CommonUtility.GetMunVdc(Model.DistrictID), "--छान्नुहोस्--", new { @class = "form-control VDCMUN" })
+          
+            @*@Html.ValidationMessageFor(model => model.Examination)*@
+        </td>
+        <td class="form-group">
+
+            @Html.TextBoxFor(model => model.DistrictWiseAmmount, new { @class = "form-control ds" })
+            @*@Html.ValidationMessageFor(model => model.Examination)*@
+        </td>
+
+        <td class="action">
+            <button type="button" onclick="DeleteRow(this)" class="row-button btn btn-sm btn-danger btn-delete"><i class="fa fa-trash-o"></i>Remove</button>
+        </td>
+
+
+
+
+    }
+</tr>
+

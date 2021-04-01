@@ -1,0 +1,42 @@
+﻿@using FormCollectionHelper
+
+@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.IngoRewnewalDocumentViewModel
+
+
+<tr>
+    @using (Html.BeginCollectionItem("IngoRewnewalDocumentViewModelList"))
+    {
+        <td class="sn-no">@ViewBag.Counter</td>
+        <td class="">
+            @Html.HiddenFor(model => model.DocumentId)
+            @if (Model.DocumentLocation != null)
+            {
+                string FileLocation = @Url.Content("~/" + Model.DocumentLocation);
+               
+                 <a class="btn btn-default" href='@Url.Content("~/GeneralAgrement/Download?fileLocation=" + FileLocation)' target="_blank"><i class="fa fa-download"></i>Download File</a>
+                @Html.HiddenFor(x => x.DocumentLocation)
+            }
+            else
+            {
+                <div class="form-control-file input-group">
+                    <input type="file" multiple accept="" name="postedFile" id="FilePicker" class="input-border FilePicker"
+                           onchange="FileName(this)">
+                </div>
+            }
+        </td>
+        <td class="form-group">
+            @Html.TextBoxFor(x => x.DocumentName, new { @id = "emp-file-text", @class = "form-control filename", placeholder = "Select File" })
+        </td>
+
+        <td class="form-group">
+            <button class="btn btn-danger a-btn-slide-text" onclick="DeleteRowTR(this)">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <span><strong>REMOVE</strong></span>
+            </button>
+
+        </td>
+
+
+    }
+</tr>
+

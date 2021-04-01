@@ -1,0 +1,184 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.IngoRenewalViewModel
+@{
+    ViewBag.Title = "InsertUpdateRenewal";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("InsertUpdateRenewal", "Renewal", FormMethod.Post, new { id = "InsertUpdateRenewal-form", enctype = "multipart/form-data" }))
+{
+@Html.HiddenFor(model => model.RenewalId)
+   @Html.HiddenFor(model => model.File_Change, new { @id = "ImageChange" })
+
+<fieldset>
+
+    <div class="content-table">
+        <div class="row">
+            <div class="col-md-4 form-group">
+                @Html.LabelFor(model => model.IngoId, new { @class = "required-field" })
+                @Html.DropDownListFor(model => model.IngoId, Samaj_Kalyan.Utility.CommonUtility.GetIngoName(), "--select--", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.IngoId)
+            </div>
+            <div class="col-md-4 form-group">
+                @Html.LabelFor(model => model.Period, new { @class = "required-field" })
+                @Html.TextBoxFor(model => model.Period, new { @class = "form-control" })
+            </div>
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-4 form-group">
+                <div class="form-grop_padding">
+                    @Html.LabelFor(model => model.RenewCharge)
+                    @Html.TextBoxFor(model => model.RenewCharge, new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="col-md-4 form-group">
+                @Html.LabelFor(model => model.RenewDate)
+                @Html.TextBoxFor(model => model.RenewDate, new { @class = "form-control" })
+            </div>
+
+
+        </div>
+
+        <div class="box box-primary">
+            <h3 class="profile-username text-center">स्क्यान फाइल</h3>
+            <div class="box-body box-profile">
+                @if (Model.FileLocation != null)
+                {
+
+                    <img class="" width="100px" height="100px" id="applicantImage" src='@Url.Content("~/" + Model.FileLocation)' />
+
+                }
+                else
+                {
+
+                    <img class="img-responsive" id="applicantImage" src=''>
+
+                }
+              
+                <div class="form-control-file">
+                    <div class="form-group">
+                        <label for="imagePicker">File input</label>
+                        <input type="file" multiple accept="image/*" name="Scan_GA" id="imagePicker" class="input-border btn btn-primary" onchange="document.getElementById('image-file-text').value = this.value.replace(/^.*\\/, '')">
+                        @Html.TextBoxFor(x => x.File_Name, new { id = "image-file-text", @class = "form-control readonly ", placeholder = "Select Image File" })
+                    </div>
+                    @if (Model.FileLocation != null)
+                    {
+                        string ImgLocation = @Url.Content("~/" + Model.FileLocation);
+                        string[] extension = ImgLocation.Split('.');
+
+                        string filename = extension[1].ToString();
+                        string[] extension2 = filename.Split('.');
+                        string a = extension[0].ToString();
+                        string[] a1 = a.Split('/');
+                        string a2 = a1[0].ToString();
+                        string a3 = a1[1].ToString();
+                        string a4 = a1[2].ToString();
+                        string a5 = a1[3].ToString();
+                        string[] b = a5.Split('_');
+                        string a6 = b[1].ToString();
+                        string adasda = "/" + a3 + "/" + a4 + "/" + a6 + "." + filename;
+
+
+
+
+                        <a class="btn btn-primary btn-block" href='@Url.Content("~/GeneralAgrement/Download?fileLocation=" + ImgLocation)' target="_blank"><i class="fa fa-download"></i>Download File</a>
+                    }
+                </div>
+
+
+                @*<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>*@
+            </div>
+        </div>
+
+    </div>
+</fieldset>
+
+
+<div class="btn-groups modal-footer">
+
+    <button type="submit" id="SaveB" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+
+
+</div>
+}
+<script>
+
+    $('#SaveB').on('click', function () {
+        //alert('dd');
+        setCookie("insert", "true", 20);
+        //alert(getCookie("insert"));
+
+    });
+
+    function getCookie(cname) {
+        debugger;
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exSecond) {
+        debugger;
+        var d = new Date();
+        d.setTime(d.getTime() + (exSecond * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+
+    </script>
+<script>
+
+    $('#imagePicker').on('change', function () {
+        if (this.files && this.files[0]) {
+            var chk = isImage(this.files[0].name)
+            if (!chk) {
+                alert('Invalid File Type!! Please select jpg or png file!!');
+                return;
+            }
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#applicantImage').attr('src', e.target.result);
+                $('#ImageChange').val(true);
+            }
+
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+    function isImage(filename) {
+        var ext = getExtension(filename);
+        switch (ext.toLowerCase()) {
+            case 'jpg':
+            case 'png':
+            case 'jpeg':
+                return true;
+        }
+        return false;
+    }
+    function getExtension(filename) {
+        var parts = filename.split('.');
+        return parts[parts.length - 1];
+    }
+    function FileName(e) {
+        var filename = $(e).closest('tr').find('.filename');
+        if ($(filename).val() == '' || $(filename).val() == 'undefined')
+            $(filename).val(e.value.replace(/^.*\\/, ''))
+
+    }
+</script>

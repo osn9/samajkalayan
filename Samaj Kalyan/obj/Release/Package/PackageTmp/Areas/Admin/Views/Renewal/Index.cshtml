@@ -1,0 +1,244 @@
+﻿
+@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.IngoRenewalViewModel
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+    int counter = 1;
+}
+
+
+
+<div>
+    <a href="@Url.Action("InsertUpdateRenewal", "Renewal")" class="btn btn-md btn-primary pull-right"><i class="fa fa-plus-circle"></i>Add New</a>
+
+</div>
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.min.js"></script>
+
+
+<div class="table-responsive">
+    <table class="table table-hover" id="patable">
+        <thead>
+            <tr>
+                <th class="width-30">
+                    SN.
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.IngoId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RenewCharge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RenewDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Period)
+                </th>
+
+
+
+                <th>
+                    Action
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.IngoRenewalViewModelList)
+            {
+                // var status = item.Status ?? false;
+                <tr id="row-@item.RenewalId">
+                    <td>
+                        @counter
+                    </td>
+                    <td>
+                        @*<a href="#" onclick="EditDeployment(@item.DepId)"><i class="fa fa-edit"></i> @item.JobPost</a>*@
+                        <a id="@item.RenewalId" class="agent-name" href='@Url.Content("~/Admin/Renewal/InsertUpdateRenewal?id=" + item.RenewalId)'><i class="fa fa-edit"></i> @item.Ingoname</a>
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.RenewCharge)
+                    </td>
+                    <td>
+                        @{ if (item.RenewDate.HasValue)
+                         {
+                             var jpt = item.RenewDate.Value.ToShortDateString();
+                            <span>@jpt</span>
+                         }
+
+                        }
+
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Period)       
+                    </td>
+
+
+                    <td>
+                        <div class="row">
+
+                            @*<div class="col-sm-6">
+                                    <a href="#javascript:void(0)" class="btn btn-primary detail  " id="detail_@item.TerminationId" data-toggle="modal" data-target="#CommonModal">
+                                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                        <strong>Details</strong>
+                                    </a>
+                                </div>*@
+                            <div class="col-md-6">
+                                <input type="button" value="Delete" class="btn btn-danger" onclick="remove(@item.RenewalId)">
+                            </div>
+
+
+
+                        </div>
+                    </td>
+
+                </tr>
+                         counter++;
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+
+
+    function remove(clientId) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover your profile!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete)=>{
+            debugger;
+        if (willDelete) {
+            $.ajax({
+                type: "POST",
+                data: {
+                    id: clientId
+                },
+                url: "/Renewal/delete",
+                dataType: "json",
+                success: function (response) {
+
+                    swal("Poof! Your profile has been deleted!", {
+                        icon: "success",
+                    });
+                    $("#row-"+clientId).remove();
+                    //swal({
+                    //    title: "Poof! you are deleted",
+
+                    //    icon: "success",
+                    //    buttons: true,
+
+                    //}).then((success)=>{
+                    //    location.reload();
+                    //});
+                }
+            })
+        }
+    });
+    }
+
+
+
+    //function remove(clientId) {
+    //    swal({
+    //        title: "Are you sure?",
+    //        text: "Once deleted, you will not be able to recover your profile!",
+    //        icon: "warning",
+    //        buttons: true,
+    //        dangerMode: true,
+    //    },(willDelete)=>{
+    //        debugger;
+    //    if (willDelete) {
+    //        $.ajax({
+    //            type: "POST",
+    //            data: {
+    //                id: clientId
+    //            },
+    //            url: "/GeneralAgrement/delete",
+    //            dataType: "json",
+    //            success: function (response) {
+    //                debugger;
+    //                swal("Poof! Your profile has been deleted!", {
+    //                    icon: "success",
+    //                },
+    //                function () {
+    //                    window.location.href = "/GeneralAgrement/Index"
+    //                });
+
+
+    //            }
+    //        });
+    //    }
+    //}
+    //);
+    //};
+
+
+
+
+    $('.detail').click(function () {
+        var href = '@Url.Content("~/Admin/GeneralAgrement/Details")';
+        $('#CommonModalLabel').html("Details")
+        var id = $(this).attr('id');
+        debugger;
+        $.ajax({
+            url: href,
+            data: { id: id.substr(id.indexOf("_") + 1) },
+            success: function (result) {
+                if (result) {
+                    debugger;
+                    $('#CommonMC').html(result);
+                }
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+    })
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        // swal("Oops", "Something went wrong!", "error")
+        // Setup - add a text input to each footer cell
+
+
+
+
+
+        $('#patable tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="' + title + ' "/>');
+        });
+
+        // DataTable
+        var table = $('#patable').DataTable();
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+        //$('#getable').DataTable();
+    });
+
+
+
+
+
+</script>

@@ -1,0 +1,89 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.IngoTerminationViewModel
+@{
+    ViewBag.Title = "InsertUpdateTermination";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("InsertUpdateTermination", "IngoTermination", FormMethod.Post, new { id = "InsertUpdateGeneralAgreement-form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.TerminationId)
+ 
+    <fieldset>
+
+        <div class="content-table">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.IngoId, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.IngoId, Samaj_Kalyan.Utility.CommonUtility.GetIngoName(),"--select--", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.IngoId)
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.NameOfAssest, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.NameOfAssest, new { @class = "form-control" })
+                </div>
+
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.TerminationDate)
+                        @Html.TextBoxFor(model => model.TerminationDate, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </fieldset>
+
+
+       <div class="btn-groups modal-footer">
+
+        <button type="submit" id="SaveB" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+
+
+    </div>
+}
+<script>
+
+    $('#SaveB').on('click', function () {
+        //alert('dd');
+        setCookie("insert", "true", 20);
+        //alert(getCookie("insert"));
+
+    });
+
+    function getCookie(cname) {
+        debugger;
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exSecond) {
+        debugger;
+        var d = new Date();
+        d.setTime(d.getTime() + (exSecond * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+
+</script>

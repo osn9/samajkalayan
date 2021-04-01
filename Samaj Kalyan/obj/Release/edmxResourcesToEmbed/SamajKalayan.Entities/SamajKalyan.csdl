@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SamajkalyanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SamajkalyanEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="zes" EntityType="SamajkalyanModel.ze" />
+    <EntitySet Name="GeneralAgreements" EntityType="SamajkalyanModel.GeneralAgreement" />
+    <EntitySet Name="PA_PartnerNgo" EntityType="SamajkalyanModel.PA_PartnerNgo" />
+    <EntitySet Name="PA_Sector" EntityType="SamajkalyanModel.PA_Sector" />
+    <EntitySet Name="PA_Years" EntityType="SamajkalyanModel.PA_Years" />
+    <EntitySet Name="ProjectAgreement_Districts" EntityType="SamajkalyanModel.ProjectAgreement_Districts" />
+    <AssociationSet Name="FK_GA_Attachment_GeneralAgreement" Association="SamajkalyanModel.FK_GA_Attachment_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreements" />
+      <End Role="GA_Attachment" EntitySet="zes" />
+    </AssociationSet>
+    <EntitySet Name="ProvincesDistrictSetups" EntityType="SamajkalyanModel.ProvincesDistrictSetup" />
+    <EntitySet Name="ProvincesMunTypes" EntityType="SamajkalyanModel.ProvincesMunType" />
+    <EntitySet Name="provincesSetups" EntityType="SamajkalyanModel.provincesSetup" />
+    <EntitySet Name="provincesVDCDetails" EntityType="SamajkalyanModel.provincesVDCDetail" />
+    <EntitySet Name="IngoRenewals" EntityType="SamajkalyanModel.IngoRenewal" />
+    <EntitySet Name="IngoTerminations" EntityType="SamajkalyanModel.IngoTermination" />
+    <EntitySet Name="ProjectAgreements" EntityType="SamajkalyanModel.ProjectAgreement" />
+    <AssociationSet Name="FK_IngoRenewal_GeneralAgreement" Association="SamajkalyanModel.FK_IngoRenewal_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreements" />
+      <End Role="IngoRenewal" EntitySet="IngoRenewals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IngoTermination_GeneralAgreement" Association="SamajkalyanModel.FK_IngoTermination_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreements" />
+      <End Role="IngoTermination" EntitySet="IngoTerminations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectAgreement_GeneralAgreement" Association="SamajkalyanModel.FK_ProjectAgreement_GeneralAgreement">
+      <End Role="GeneralAgreement" EntitySet="GeneralAgreements" />
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PA_PartnerNgo_ProjectAgreement" Association="SamajkalyanModel.FK_PA_PartnerNgo_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreements" />
+      <End Role="PA_PartnerNgo" EntitySet="PA_PartnerNgo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PA_Sector_ProjectAgreement" Association="SamajkalyanModel.FK_PA_Sector_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreements" />
+      <End Role="PA_Sector" EntitySet="PA_Sector" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PA_Years_ProjectAgreement" Association="SamajkalyanModel.FK_PA_Years_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreements" />
+      <End Role="PA_Years" EntitySet="PA_Years" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectAgreement_Districts_ProjectAgreement" Association="SamajkalyanModel.FK_ProjectAgreement_Districts_ProjectAgreement">
+      <End Role="ProjectAgreement" EntitySet="ProjectAgreements" />
+      <End Role="ProjectAgreement_Districts" EntitySet="ProjectAgreement_Districts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ze">
+    <Key>
+      <PropertyRef Name="GA_Attachment_ID" />
+    </Key>
+    <Property Name="GA_Attachment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Scan_GA_Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PA_Attachment_Location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralAgreement_ID" Type="Int32" />
+    <NavigationProperty Name="GeneralAgreement" Relationship="SamajkalyanModel.FK_GA_Attachment_GeneralAgreement" FromRole="GA_Attachment" ToRole="GeneralAgreement" />
+  </EntityType>
+  <EntityType Name="GeneralAgreement">
+    <Key>
+      <PropertyRef Name="GeneralAgreement_ID" />
+    </Key>
+    <Property Name="GeneralAgreement_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Of_Ingo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name_of_Ingo_Nepali" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ga_Date_Nepali" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ga_Date" Type="DateTime" Precision="0" />
+    <Property Name="Period" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_Annum_Commitment_Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Ga_Service_Charge" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hq_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_Person" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Country_Official_Nepal_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Contact_Number" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GA_TerminationDate" Type="DateTime" Precision="0" />
+    <Property Name="Ga_TerminationDate_Nepali" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletdedDate" Type="DateTime" Precision="0" />
+    <Property Name="Scan_GA_Location" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+    <Property Name="PA_Attachment_Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GA_Attachment" Relationship="SamajkalyanModel.FK_GA_Attachment_GeneralAgreement" FromRole="GeneralAgreement" ToRole="GA_Attachment" />
+    <NavigationProperty Name="IngoRenewals" Relationship="SamajkalyanModel.FK_IngoRenewal_GeneralAgreement" FromRole="GeneralAgreement" ToRole="IngoRenewal" />
+    <NavigationProperty Name="IngoTerminations" Relationship="SamajkalyanModel.FK_IngoTermination_GeneralAgreement" FromRole="GeneralAgreement" ToRole="IngoTermination" />
+    <NavigationProperty Name="ProjectAgreements" Relationship="SamajkalyanModel.FK_ProjectAgreement_GeneralAgreement" FromRole="GeneralAgreement" ToRole="ProjectAgreement" />
+  </EntityType>
+  <EntityType Name="PA_PartnerNgo">
+    <Key>
+      <PropertyRef Name="PA_PatnerNGOs_ID" />
+    </Key>
+    <Property Name="PA_PatnerNGOs_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ngo_Number" Type="Int32" />
+    <Property Name="Ngo_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectAgreement_ID" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="ProjectAgreement" Relationship="SamajkalyanModel.FK_PA_PartnerNgo_ProjectAgreement" FromRole="PA_PartnerNgo" ToRole="ProjectAgreement" />
+  </EntityType>
+  <EntityType Name="PA_Sector">
+    <Key>
+      <PropertyRef Name="ProjectAgreementSector_ID" />
+    </Key>
+    <Property Name="ProjectAgreementSector_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sector" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectAgreement_ID" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="ProjectAgreement" Relationship="SamajkalyanModel.FK_PA_Sector_ProjectAgreement" FromRole="PA_Sector" ToRole="ProjectAgreement" />
+  </EntityType>
+  <EntityType Name="PA_Years">
+    <Key>
+      <PropertyRef Name="ProjectAgreement_Year_Id" />
+    </Key>
+    <Property Name="ProjectAgreement_Year_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Project_Agreement_Id" Type="Int32" />
+    <NavigationProperty Name="ProjectAgreement" Relationship="SamajkalyanModel.FK_PA_Years_ProjectAgreement" FromRole="PA_Years" ToRole="ProjectAgreement" />
+  </EntityType>
+  <EntityType Name="ProjectAgreement_Districts">
+    <Key>
+      <PropertyRef Name="ProjectAgreementBudgetBreakDown_ID" />
+    </Key>
+    <Property Name="ProjectAgreementBudgetBreakDown_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DistrictID" Type="Int32" />
+    <Property Name="DistrictWiseAmmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProjectAgreementID" Type="Int32" />
+    <Property Name="Locallevel" Type="Int32" />
+    <Property Name="ProvienceId" Type="Int32" />
+    <NavigationProperty Name="ProjectAgreement" Relationship="SamajkalyanModel.FK_ProjectAgreement_Districts_ProjectAgreement" FromRole="ProjectAgreement_Districts" ToRole="ProjectAgreement" />
+  </EntityType>
+  <Association Name="FK_GA_Attachment_GeneralAgreement">
+    <End Type="SamajkalyanModel.GeneralAgreement" Role="GeneralAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.ze" Role="GA_Attachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="GA_Attachment">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProvincesDistrictSetup">
+    <Key>
+      <PropertyRef Name="ProvincesDistrictId" />
+    </Key>
+    <Property Name="ProvincesDistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReferenceDistrictId" Type="Int32" />
+    <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProvincesId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProvincesMunType">
+    <Key>
+      <PropertyRef Name="ProvinceMUNTypeId" />
+    </Key>
+    <Property Name="ProvinceMUNTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="provincesSetup">
+    <Key>
+      <PropertyRef Name="provincesId" />
+    </Key>
+    <Property Name="provincesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="provincesName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="provincesVDCDetail">
+    <Key>
+      <PropertyRef Name="ProvincesVDCDetailsID" />
+    </Key>
+    <Property Name="ProvincesVDCDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VDCName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ProvincesId" Type="Int32" Nullable="false" />
+    <Property Name="ProvincesDistrictId" Type="Int32" Nullable="false" />
+    <Property Name="VdcOrMunicipilityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IngoRenewal">
+    <Key>
+      <PropertyRef Name="RenewalId" />
+    </Key>
+    <Property Name="RenewalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IngoId" Type="Int32" Nullable="false" />
+    <Property Name="Period" Type="Int32" />
+    <Property Name="RenewCharge" Type="Int32" />
+    <Property Name="RenewalDateNP" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RenewDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="UpdatedBy" Type="Int32" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+    <Property Name="DeletetDate" Type="DateTime" Precision="0" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="FileLocation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GeneralAgreement" Relationship="SamajkalyanModel.FK_IngoRenewal_GeneralAgreement" FromRole="IngoRenewal" ToRole="GeneralAgreement" />
+  </EntityType>
+  <EntityType Name="IngoTermination">
+    <Key>
+      <PropertyRef Name="TerminationId" />
+    </Key>
+    <Property Name="TerminationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IngoId" Type="Int32" />
+    <Property Name="TerminationDateNp" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+    <Property Name="NameOfAssest" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EvaluationOfReportAttached" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="DeletdDate" Type="DateTime" Precision="0" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="UpdateBy" Type="Int32" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="GeneralAgreement" Relationship="SamajkalyanModel.FK_IngoTermination_GeneralAgreement" FromRole="IngoTermination" ToRole="GeneralAgreement" />
+  </EntityType>
+  <EntityType Name="ProjectAgreement">
+    <Key>
+      <PropertyRef Name="ProjectAgreement_ID" />
+    </Key>
+    <Property Name="ProjectAgreement_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_Of_Project" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name_Of_Project_Nepali" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Pa_Sign_DateNepali" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PA_Sign_Date" Type="DateTime" Precision="0" />
+    <Property Name="Doner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralAgreement_ID" Type="Int32" />
+    <Property Name="District_ID" Type="Int32" />
+    <Property Name="Local_Level_ID" Type="Int32" />
+    <Property Name="Provience_ID" Type="Int32" />
+    <Property Name="Banking_Status" Type="Boolean" />
+    <Property Name="Name_Of_Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Account_NO" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Total_Budget" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Admin_Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Program_Cost" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Project_Period" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="No_Of_Expertriate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="UpDatedBy" Type="Int32" />
+    <Property Name="UpDatedDaye" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="GeneralAgreement" Relationship="SamajkalyanModel.FK_ProjectAgreement_GeneralAgreement" FromRole="ProjectAgreement" ToRole="GeneralAgreement" />
+    <NavigationProperty Name="PA_PartnerNgo" Relationship="SamajkalyanModel.FK_PA_PartnerNgo_ProjectAgreement" FromRole="ProjectAgreement" ToRole="PA_PartnerNgo" />
+    <NavigationProperty Name="PA_Sector" Relationship="SamajkalyanModel.FK_PA_Sector_ProjectAgreement" FromRole="ProjectAgreement" ToRole="PA_Sector" />
+    <NavigationProperty Name="PA_Years" Relationship="SamajkalyanModel.FK_PA_Years_ProjectAgreement" FromRole="ProjectAgreement" ToRole="PA_Years" />
+    <NavigationProperty Name="ProjectAgreement_Districts" Relationship="SamajkalyanModel.FK_ProjectAgreement_Districts_ProjectAgreement" FromRole="ProjectAgreement" ToRole="ProjectAgreement_Districts" />
+  </EntityType>
+  <Association Name="FK_IngoRenewal_GeneralAgreement">
+    <End Type="SamajkalyanModel.GeneralAgreement" Role="GeneralAgreement" Multiplicity="1" />
+    <End Type="SamajkalyanModel.IngoRenewal" Role="IngoRenewal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="IngoRenewal">
+        <PropertyRef Name="IngoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IngoTermination_GeneralAgreement">
+    <End Type="SamajkalyanModel.GeneralAgreement" Role="GeneralAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.IngoTermination" Role="IngoTermination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="IngoTermination">
+        <PropertyRef Name="IngoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectAgreement_GeneralAgreement">
+    <End Type="SamajkalyanModel.GeneralAgreement" Role="GeneralAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.ProjectAgreement" Role="ProjectAgreement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneralAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Principal>
+      <Dependent Role="ProjectAgreement">
+        <PropertyRef Name="GeneralAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PA_PartnerNgo_ProjectAgreement">
+    <End Type="SamajkalyanModel.ProjectAgreement" Role="ProjectAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.PA_PartnerNgo" Role="PA_PartnerNgo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PA_PartnerNgo">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PA_Sector_ProjectAgreement">
+    <End Type="SamajkalyanModel.ProjectAgreement" Role="ProjectAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.PA_Sector" Role="PA_Sector" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PA_Sector">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PA_Years_ProjectAgreement">
+    <End Type="SamajkalyanModel.ProjectAgreement" Role="ProjectAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.PA_Years" Role="PA_Years" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="PA_Years">
+        <PropertyRef Name="Project_Agreement_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectAgreement_Districts_ProjectAgreement">
+    <End Type="SamajkalyanModel.ProjectAgreement" Role="ProjectAgreement" Multiplicity="0..1" />
+    <End Type="SamajkalyanModel.ProjectAgreement_Districts" Role="ProjectAgreement_Districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAgreement">
+        <PropertyRef Name="ProjectAgreement_ID" />
+      </Principal>
+      <Dependent Role="ProjectAgreement_Districts">
+        <PropertyRef Name="ProjectAgreementID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

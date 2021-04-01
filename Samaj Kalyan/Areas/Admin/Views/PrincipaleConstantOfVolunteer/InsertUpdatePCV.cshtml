@@ -1,0 +1,240 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.PrincipaleConstantOfVolunteerViewModel
+
+@{
+    ViewBag.Title = "InsertUpdatePCV";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+}
+<script src="~/Content/NepaliDatePicker/js/jquery-2.1.0.min.js"></script>
+<script src="~/Content/NepaliDatePicker/js/jquery.js"></script>
+<script src="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
+<link href="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+       
+     
+        @Html.ValidationSummary(true)
+
+      
+        @Html.HiddenFor(model => model.VolunteerID)
+
+        <div class="content-table" id="form_div">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.GA_Id, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.GA_Id, Samaj_Kalyan.Utility.CommonUtility.GetIngoName(), new { @class = "form-control GA" })
+
+                    @Html.ValidationMessageFor(model => model.PA_Id, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.PA_Id, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.PA_Id, Samaj_Kalyan.Utility.CommonUtility.Getpalist(Model.GA_Id), new { @class = "form-control PA" })
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Council_sRagistrationNumber)
+                        @Html.TextBoxFor(model => model.Council_sRagistrationNumber, new { @class = "form-control WPT" })
+                        @*  @Html.DropDownListFor(model => model.ShiftType, BusinessLogic.Service.ShiftService.GetShiftType(), "--select one--", new { @class = "form-control shifttype" })*@
+                        @Html.ValidationMessageFor(model => model.Council_sRagistrationNumber, null, new { @class = "text-danger" })
+
+
+                    </div>
+                </div>
+            
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.C_Council_sRagistrationDate)
+                        @Html.HiddenFor(model => model.C_Council_sRagistrationDate)
+                        @Html.TextBoxFor(model => model.C_Council_sRagistrationDateNp, new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.NameOfAppicant)
+                        @Html.TextBoxFor(model => model.NameOfAppicant, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Country)
+                        @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.PassportNumber)
+
+                        @Html.TextBoxFor(model => model.PassportNumber, new { @class = "form-control  " })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.VisaDuration)
+                        @Html.TextBoxFor(model => model.VisaDuration, new { @class = "form-control ", @type = "number" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.ApplicationDesingation)
+                        @Html.TextBoxFor(model => model.ApplicationDesingation, new { @class = "form-control" })
+
+                    </div>
+                </div>
+              
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.ServiceReciverNGOSName)
+                        @Html.TextBoxFor(model => model.ServiceReciverNGOSName, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Agreement)
+                        @Html.TextBoxFor(model => model.Agreement, new { @class = "form-control" })
+
+                    </div>
+                </div>
+           
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.ApplicationSector)
+                        @Html.TextBoxFor(model => model.ApplicationSector, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.DecisionDate)
+                        @Html.TextBoxFor(model => model.DecisionDateNp, new { @class = "form-control" })
+                        @Html.HiddenFor(model => model.DecisionDate, new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Remarks)
+                        @Html.TextBoxFor(model => model.Remarks, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" id="SaveB" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+    $('#SaveB').on('click', function () {
+        //alert('dd');
+        setCookie("insert", "true", 20);
+        //alert(getCookie("insert"));
+
+    });
+
+    function getCookie(cname) {
+        debugger;
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exSecond) {
+        debugger;
+        var d = new Date();
+        d.setTime(d.getTime() + (exSecond * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    $(function () {
+        debugger;
+        $(".content-table").on('change', '.GA', function () {
+            debugger;
+            //  alert("");
+            debugger;
+            var id = $(this).val();
+
+            var json = { id: id };
+            var project = $(this).closest('.row').find(".PA")
+            $(project).find('option').remove()
+           // var MunVdc = $(this).closest('tr').find(".VDCMUN")
+            //$(district).empty();
+            //$(MunVdc).empty();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetPaByGaId", "WorkPermit")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                debugger;
+                    $(project).append('<option value="">--SELECT PA--</option>');
+                    $.each(data, function (key, value) {
+                        $(project).append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                    });
+                }
+            });
+        });
+    });
+
+    $(function () {
+        debugger;
+        $("#InsertUpdateWorkPermit-form").on('change', '.WPT', function () {
+            debugger;
+            //  alert("");
+            debugger;
+            var id = $(this).val();
+            if (id == 3) {
+                $(".p-1").hide();
+            }
+            else {
+                $(".p-1").show();
+            }
+
+        });
+    });
+
+</script>

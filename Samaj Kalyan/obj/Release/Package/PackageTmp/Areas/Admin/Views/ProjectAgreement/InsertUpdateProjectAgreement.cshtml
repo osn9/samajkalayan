@@ -1,0 +1,420 @@
+﻿@model Samaj_Kalyan.Areas.Admin.Models.ProjectAgreementViewModel
+@{
+    ViewBag.Title = "InsertUpdateProjectAgreement";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+
+}
+<script src="~/Content/NepaliDatePicker/js/jquery-2.1.0.min.js"></script>
+<script src="~/Content/NepaliDatePicker/js/jquery.js"></script>
+<script src="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
+<link href="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.min.js"></script>
+<div >
+    @if (ViewBag.success != null)
+    {
+        <div class="alert alert-success">
+            <strong>Well done!</strong> @ViewBag.success
+        </div>
+    }
+    @if (TempData["SuccessMsg"] != null)
+    {
+
+        <div class="alert alert-success  alert-dismissible fade show" role="alert">
+            @TempData["SuccessMsg"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    @if (TempData["Msg"] != null)
+{
+    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+        @TempData["Msg"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        
+    }
+    @if (TempData["DMsg"] != null)
+    {
+        <script>
+            swal("General Agreement date Has Not ended", "Error", "error");
+        </script>
+
+    }
+</div>
+
+
+@using (Html.BeginForm("InsertUpdateProjectAgreement", "ProjectAgreement", FormMethod.Post, new { id = "InsertUpdateProjectAgreement-form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.ProjectAgreement_ID)
+ 
+    <fieldset>
+
+        <div class="content-table">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.GeneralAgreement_ID, new { @class = "required-field" })
+                    @Html.DropDownListFor(model => model.GeneralAgreement_ID, Samaj_Kalyan.Utility.CommonUtility.GetIngoName(), "--छान्नुहोस्--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GeneralAgreement_ID ,null, new { @class = "text-danger" })
+
+
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Name_Of_Project, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.Name_Of_Project, new { @class = "form-control" })
+                    @Html.HiddenFor(model=>model.ProjectAgreement_ID )
+
+                    @Html.ValidationMessageFor(model => model.Name_Of_Project, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Name_Of_Project_Nepali, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.Name_Of_Project_Nepali, new { @class = "form-control" })
+                </div>
+              
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.PA_Sign_Date)
+                        @Html.TextBoxFor(model => model.Pa_Sign_DateNepali, new { @class = "form-control" })
+
+
+                        @Html.HiddenFor(model => model.PA_Sign_Date, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Doner)
+                      
+                        @*  @Html.DropDownListFor(model => model.ShiftType, BusinessLogic.Service.ShiftService.GetShiftType(), "--select one--", new { @class = "form-control shifttype" })*@
+                        @Html.TextBoxFor(model => model.Doner, new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Project_Period)
+                        @Html.TextBoxFor(model => model.Project_Period, new { @class = "form-control" , @type = "number"})
+
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+                        @Html.LabelFor(model => model.Total_Budget)
+
+                        @Html.TextBoxFor(model => model.Total_Budget, new { @class = "form-control  ", @type = "number" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Admin_Cost)
+                        @Html.TextBoxFor(model => model.Admin_Cost, new { @class = "form-control" , @type = "number"})
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Program_Cost)
+                        @Html.TextBoxFor(model => model.Program_Cost, new { @class = "form-control" , @type = "number"})
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.No_Of_Expertriate)
+                        @Html.TextBoxFor(model => model.No_Of_Expertriate, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Name_Of_Bank)
+                        @Html.TextBoxFor(model => model.Name_Of_Bank, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div class="form-grop_padding">
+
+                        @Html.LabelFor(model => model.Account_NO)
+                        @Html.TextBoxFor(model => model.Account_NO, new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </fieldset>
+
+
+
+
+    <fieldset class="border p-1">
+        <legend> साझेदार गैर सरकारी संगठन विवरण</legend>
+        <div class="box-header">
+            <h3 class="box-title"> </h3>
+            <div class="box-tools">
+                <button type="button" id="btn-AddEmployeeDetails" class="btn btn-primary btn-add pull-right"><i class="fa fa-plus"></i>Add More</button>
+            </div>
+        </div>
+        <div class="content-table">
+            <div id="Employe-details-table-div">
+
+                <div class="clearfix"></div>
+
+
+                <div id="Employe-detailsList">
+                    <div class="box-body table-responsive ">
+                        <table class="table table-hover">
+
+                            <tr>
+                                <th>SN.</th>
+                                <th>गैर सरकारी संगठनको नाम</th>
+
+                                <th>गैर सरकारी संस्था नम्बर</th>
+                                <th>राशि</th>
+                                <th>Action </th>
+                            </tr>
+
+                            <tbody id="Employe-details-table-body">
+                                @if (Model != null && Model.PA_PartnerNgoViewModelList != null)
+                                {
+                                    int counter = 1;
+                                    foreach (var item in Model.PA_PartnerNgoViewModelList)
+                                    {
+                                        ViewBag.Counter = counter;
+                                        @Html.Partial("_ngoPartners", item)
+                                        counter++;
+
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                        @*<div class="sn-no"></div>
+                            <div class="width20">Designation</div>
+                            <div class="width20">No of deployment</div>
+                            <div class="width20">Duty slots</div>
+                            <div class="action">Action</div>
+                            <div class="clearfix"></div>
+                            </tr>*@
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    @*<div class="box-body table-responsive" >
+                            <div class="table table-hover">
+                                <table>
+
+                                </table>
+                            </div>
+
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="border p-2">
+        <legend> जिल्लाको बजेट विवरण</legend>
+        <div class="box-header">
+            <h3 class="box-title"> </h3>
+            <div class="box-tools">
+                <button type="button" id="btn-AddDistrict" class="btn btn-primary btn-add pull-right"><i class="fa fa-plus"></i>Add More</button>
+            </div>
+        </div>
+        <div class="content-table">
+            <div id="District-details-table-div">
+
+                <div class="clearfix"></div>
+
+
+                <div id="District-detailsList">
+                    <div class="box-body table-responsive ">
+                        <table class="table table-hover">
+
+                            <tr>
+                                <th>SN.</th>
+                                <th> राज्य</th>
+                                <th>जिल्ला   </th>
+                                <th> स्थानीय स्तर</th>
+
+
+
+
+                                <th>जिल्लाको राशि</th>
+                                <th>Action </th>
+                            </tr>
+
+                            <tbody id="District-details-table-body">
+                                @if (Model != null && Model.ProjectAgreement_DistrictsViewModelList != null)
+                                {
+                                    int counter = 1;
+                                    foreach (var item in Model.ProjectAgreement_DistrictsViewModelList)
+                                    {
+                                        ViewBag.Counter = counter;
+                                        @Html.Partial("_districtBudget", item)
+                                        counter++;
+
+                                    }
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="btn-groups modal-footer">
+        @*@{
+            
+    if (Model.GeneralAgreement_ID>0)
+    {
+        <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-save"></i>Save Change</button>
+        
+       
+    }
+    else { 
+        
+    
+    } 
+        }*@
+        
+        <button type="submit" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+    </div>
+}
+<script>
+    function DeleteRow(e) {
+        var section = $(e).closest('fieldset').find('legend').html();
+        var confirmValue = confirm("Are you sure to delete this " + section + " ?");
+        if (confirmValue) {
+            $(e).closest('tr').remove();
+        }
+
+    }
+    $('#btn-AddEmployeeDetails').on('click', function () {
+        var counter = $('#Employe-details-table-body').find('tr').length + 1;
+        debugger;
+        $.ajax({
+            url: '@Url.Content("~/Admin/ProjectAgreement/AddMoreNgos")',
+            data: { counter: counter },
+            success: function (result) {
+                if (result) {
+                    $('#Employe-details-table-body').append(result);
+                }
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+
+    });
+
+
+
+    $('#btn-AddDistrict').on('click', function () {
+        var counter = $('#District-details-table-body').find('tr').length + 1;
+        debugger;
+        $.ajax({
+            url: '@Url.Content("~/Admin/ProjectAgreement/AddMoreDistricts")',
+            data: { counter: counter },
+            success: function (result) {
+                if (result) {
+                    $('#District-details-table-body').append(result);
+                }
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+
+    });
+
+
+    $(function () {
+        debugger;
+        $(".content-table").on('change', '.Provience', function () {
+            debugger;
+          //  alert("");
+            var provinceId = $(this).val();
+            var json = { provinceId: provinceId };
+            var district = $(this).closest('tr').find(".district")
+            var MunVdc = $(this).closest('tr').find(".VDCMUN")
+            $(district).empty();
+            $(MunVdc).empty();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetDistrictListByProvinceId", "ProjectAgreement")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $(district).append('<option value="">--SELECT District--</option>');
+                    $.each(data, function (key, value) {
+                        $(district).append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                    });
+                }
+        });
+    });
+    });
+
+
+    $(function () {
+        debugger;
+        $(".content-table").on('change', '.district', function () {
+            debugger;
+          //  alert("");
+            var districtId = $(this).val();
+            var json = { districtId: districtId };
+            var MunVdc = $(this).closest("tr").find(".VDCMUN")
+            $(MunVdc).empty();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetMunListByDistrictId", "ProjectAgreement")',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function (data) {
+                    $(MunVdc).append('<option value="">--SELECT Municipality/ VDC--</option>');
+                    $.each(data, function (key, value) {
+                        $(MunVdc).append('<option value=' + value.Value + '>' + value.Text + '</option>');
+                    });
+                }
+            });
+
+        });
+    });
+</script>
+<script>
+
+    $('#Pa_Sign_DateNepali').nepaliDatePicker({
+        npdMonth: true,
+        npdYear: true,
+        ndpEnglishInput: 'PA_Sign_Date'
+    });
+
+
+</script>

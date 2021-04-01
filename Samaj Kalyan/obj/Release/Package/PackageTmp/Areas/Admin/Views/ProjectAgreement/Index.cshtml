@@ -1,0 +1,370 @@
+﻿
+
+@model Samaj_Kalyan.Areas.Admin.Models.ProjectAgreementViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+   // Layout = null;
+    int counter = 1;
+}
+
+@*<script src="~/vendor/jquery/jquery.min.js"></script>*@
+
+<link href="~/Styles/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/sweetalert.min.js"></script>
+
+<div>
+    <a href="@Url.Action("InsertUpdateProjectAgreement", "ProjectAgreement")" class="btn btn-md btn-primary float-left"><i class="fa fa-plus-circle"></i>Add New</a>
+    
+
+</div>
+<br />
+<br /><br />
+
+@*<div class="float-left">
+    @if (ViewBag.success != null)
+    {
+        <div class="alert alert-success">
+            <strong>Well done!</strong> @ViewBag.success
+        </div>
+    }
+    @if (TempData["SuccessMsg"] != null)
+{
+
+    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+        @TempData["SuccessMsg"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+    @if (TempData["Msg"] != null)
+    {
+        <script>alert("@TempData["Msg"]");</script>
+    }
+</div>*@
+<div class="table-responsive">
+    <table class="table table-hover" id="patable">
+        <thead>
+            <tr>
+                <th class="width-30">
+                    SN.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.GeneralAgreement_ID)
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.Name_Of_Project)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name_Of_Project_Nepali)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PA_Sign_Date)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Doner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project_Period)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Name_Of_Bank)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Account_NO)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Total_Budget)
+                </th>*@
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Admin_Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Program_Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.No_Of_Expertriate)
+                </th>*@
+
+                <th>
+                    Action
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ProjectAgreementViewModelList)
+{
+    // var status = item.Status ?? false;
+    <tr id="row-@item.ProjectAgreement_ID">
+        <td>
+            @counter
+        </td>
+      <td>
+          @Html.DisplayFor(modelitem => item.IngoName)
+        </td>
+        <td>
+            @*<a href="#" onclick="EditDeployment(@item.DepId)"><i class="fa fa-edit"></i> @item.JobPost</a>*@
+            <a id="@item.ProjectAgreement_ID" class="agent-name" href='@Url.Content("~/Admin/ProjectAgreement/InsertUpdateProjectAgreement?id=" + item.ProjectAgreement_ID)'><i class="fa fa-edit"></i> @item.Name_Of_Project</a>
+        </td>
+
+        <td>
+
+            @Html.DisplayFor(modelItem => item.Name_Of_Project_Nepali)
+        </td>
+        <td>
+
+         
+            @{ if (item.PA_Sign_Date.HasValue)
+             {
+                 var jpt = item.PA_Sign_Date.Value.ToShortDateString();
+                @*<span>@jpt</span>*@
+                @Html.DisplayFor(modelItem => item.Pa_Sign_DateNepali)
+             }
+
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doner)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Project_Period)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name_Of_Bank)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account_NO)
+
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Total_Budget)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin_Cost)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Program_Cost)
+
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.No_Of_Expertriate)
+
+        </td>
+        <td>
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <a href="#javascript:void(0)" class="btn btn-primary detail  " id="detail_@item.ProjectAgreement_ID" data-toggle="modal" data-target="#CommonModal">
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                        <strong>Details</strong>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <input type="button" value="Delete" class="btn btn-danger" onclick="remove(@item.ProjectAgreement_ID)">
+                </div>
+
+
+
+            </div>
+        </td>
+
+    </tr>
+    counter++;
+}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th class="width-30">
+                    SN.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GeneralAgreement_ID)
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.Name_Of_Project)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name_Of_Project_Nepali)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PA_Sign_Date)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Doner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project_Period)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("delete", "ProjectAgreement", FormMethod.Post, new { id = "Delete-form", enctype = "multipart/form-data" }))
+            {
+                <div class="modal-header">
+                    <h5 class="modal-title" id="DeleteModalLabel">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <label>
+                        Are you sure you want to delete?
+                    </label>
+                    @*@Html.TextBoxFor(model => model.CompletedDateNp, new { @class = "form-control nepali-calendar", @id = "cdDate", @name = "cdDate" })
+                        @Html.HiddenFor(model => model.CompletedDateAd, new { @id = "cdDateNp", @name = "cdDateNp" })*@
+                    @*<input type="text" class="nepali-calendar" id="cdDate" name="cdDate">
+                        <input type="text" id="cdDateNp" name="cdDateNp">*@
+
+                    <input id="DepidDelete" name="id" type="text" hidden="hidden" >
+                    @**@
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="Submit" class="btn btn-primary">Delete </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="CommonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="CommonMC"></div>
+        </div>
+    </div>
+</div>
+@{if (true)
+{
+    if (TempData["SuccessMsg"] != null)
+    {
+        <script>
+            swal("Success!", "Data Saved", "success");
+        </script>
+    }
+
+}
+
+}
+<script>
+
+    $(document).ready(function () {
+        
+   
+
+
+        $('#patable tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="' + title + ' "/>');
+        });
+
+        // DataTable
+        var table = $('#patable').DataTable();
+
+        // Apply the search
+        table.columns().every(function () {
+            var that = this;
+
+            $('input', this.footer()).on('keyup change', function () {
+                if (that.search() !== this.value) {
+                    that
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        });
+    });
+
+
+    $('.delete').click(function () {
+        debugger
+       // alert("asdasdasd");
+        event.preventDefault();
+        var abc = $(this).attr("id");
+        abc = abc.substring(abc.indexOf('_') + 1);
+        $('#DepidDelete').val(abc);
+    });
+
+
+
+
+    
+    function remove(clientId) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover your profile!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete)=>{
+            debugger;
+        if (willDelete) {
+            $.ajax({
+                type: "POST",
+                data: {
+                    id: clientId
+                },
+                url: "/ProjectAgreement/delete",
+                dataType: "json",
+                success: function (response) {
+                  
+                    swal("Poof! Your profile has been deleted!", {
+                        icon: "success",
+                    });
+                    $("#row-"+clientId).remove();
+                    //swal({
+                    //    title: "Poof! you are deleted",
+                       
+                    //    icon: "success",
+                    //    buttons: true,
+                        
+                    //}).then((success)=>{
+                    //    location.reload();
+                    //});
+                }
+            })
+        }
+    });
+    }
+    $('.detail').click(function () {
+        var href = '@Url.Content("~/Admin/ProjectAgreement/Details")';
+        $('#CommonModalLabel').html("Details")
+        var id = $(this).attr('id');
+        debugger;
+        $.ajax({
+            url: href,
+            data: { id: id.substr(id.indexOf("_") + 1) },
+            success: function (result) {
+                if (result) {
+                    debugger;
+                    $('#CommonMC').html(result);
+                }
+            },
+            error: function () {
+                alert('error in calling ajax !!')
+            }
+        });
+    })
+
+</script>

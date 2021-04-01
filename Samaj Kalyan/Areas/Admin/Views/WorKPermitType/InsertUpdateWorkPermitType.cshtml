@@ -1,0 +1,94 @@
+﻿
+
+
+
+@model Samaj_Kalyan.Areas.Admin.Models.SetupViewModel.WorkPermitTypeViewModel
+@{
+    ViewBag.Title = "InsertUpdateTermination";
+    Layout = "~/Areas/Admin/Views/Shared/SharedLayout.cshtml";
+}
+
+<script src="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.js"></script>
+<link href="~/Content/NepaliDatePicker/nepali.datepicker.v2.2.min.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("InsertUpdateWorkPermitType", "WorKPermitType", FormMethod.Post, new { id = "InsertUpdateWorkPermitType-form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.WorkPermitTypeId)
+
+    <fieldset>
+
+        <div class="content-table">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "required-field" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+             
+
+
+            </div>
+          
+        </div>
+    </fieldset>
+
+
+    <div class="btn-groups modal-footer">
+
+        <button type="submit" id="SaveB" class="btn btn-success btn-save"><i class="fa fa-save"></i>Save</button>
+
+
+
+    </div>
+}
+<script>
+
+    $('#SaveB').on('click', function () {
+        //alert('dd');
+        setCookie("insert", "true", 20);
+        //alert(getCookie("insert"));
+
+    });
+
+    function getCookie(cname) {
+        debugger;
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function setCookie(cname, cvalue, exSecond) {
+        debugger;
+        var d = new Date();
+        d.setTime(d.getTime() + (exSecond * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+
+</script>
+<script>
+
+
+    //$('#TerminationDateNp').nepaliDatePicker({
+    //    npdMonth: true,
+    //    npdYear: true,
+    //    ndpEnglishInput: 'TerminationDate'
+    //});
+
+
+    //$('#TerminationDateNp').change(function () {
+    //    $('#TerminationDate').val(BS2AD($('#TerminationDateNp').val()));
+    //});
+</script>

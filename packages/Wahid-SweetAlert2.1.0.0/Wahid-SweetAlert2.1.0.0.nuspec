@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Wahid-SweetAlert2</id>
+    <version>1.0.0</version>
+    <title>SweetAlert2</title>
+    <authors>Wahid H. Joudrey</authors>
+    <owners>Wahid H. Joudrey</owners>
+    <licenseUrl>https://sweetalert2.github.io/</licenseUrl>
+    <projectUrl>https://sweetalert2.github.io/</projectUrl>
+    <iconUrl>https://sweetalert2.github.io/images/swal2-logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Files are CSS and JavaScript codes that are needed to use Sweet Alert 2. Please link to the files as you normally would in cshtml. This are the source code from Sweet Alert2 on Github.</description>
+    <summary>This Files are the CCS and JavaScript for SweetAlert2 as an open source project from GitHub.</summary>
+    <copyright>SweetAlert2-2018</copyright>
+  </metadata>
+</package>
